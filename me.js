@@ -16,10 +16,7 @@
 			window.localStorage.setItem(paramm, data);					
 			window.localStorage.setItem(parammtim, Math.round(+new Date()/1000));	
 			document.getElementById(divid).innerHTML=data;
-<<<<<<< HEAD
 			document.getElementById('hidden').style.display='none'; //desaciona animação de carregamento
-=======
->>>>>>> 7fd2935f8538633f8838e13eb75818ba3724c31f
 		});
 		}
 		else{
@@ -37,11 +34,8 @@
 					window.localStorage.removeItem(parammtim);
 					window.localStorage.setItem(paramm, data);					
 					window.localStorage.setItem(parammtim, Math.round(+new Date()/1000));	
-<<<<<<< HEAD
 					document.getElementById(divid).innerHTML=data;
 					document.getElementById('hidden').style.display='none'; //desaciona animação de carregamento
-=======
->>>>>>> 7fd2935f8538633f8838e13eb75818ba3724c31f
 				});
 			}
 			document.getElementById(divid).innerHTML=window.localStorage.getItem(paramm);
@@ -52,7 +46,6 @@
 	if(valuea === null){
 		logout();
 	}
-<<<<<<< HEAD
 	
 	function atualizar(){
 	document.getElementById('hidden').style.display='block'; //aciona animação de carregamento
@@ -66,7 +59,3 @@
 	function go_to(value){
 	window.location=value;
 	}
-=======
-	//fetch(window.localStorage.getItem('auth_login'), window.localStorage.getItem('auth_pass'), 'friends', 'amigos');
-	fetch(window.localStorage.getItem('auth_login'), window.localStorage.getItem('auth_pass'), 'friends-without', 'amigos-sem');
->>>>>>> 7fd2935f8538633f8838e13eb75818ba3724c31f
