@@ -1,0 +1,22 @@
+<!doctype html>
+<html>
+  <head>
+   <title>tittle</title>
+   <script>
+	var value = window.localStorage.getItem('welcome');
+	var valuea = window.localStorage.getItem('auth');
+	if(value === null){
+		window.location='./welcome.html';
+	}
+	else{
+		if(valuea === null){
+			window.location='./login.html';
+		}
+		else{
+			window.location='./me.html';
+		}
+	}	
+   </script>
+  <body>
+  </body>
+</html>

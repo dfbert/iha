@@ -1,0 +1,41 @@
+<html>
+	<head>
+		<script src="jquery.min.js" type="text/javascript"></script>
+		<script type="text/javascript" charset="utf-8" src="phonegap-1.4.1.js"></script>
+		<script src="jquery.jsonp-2.1.4.min.js"></script>
+		<script src="./includes/basics.js" type="text/javascript"></script>
+		<script src="login.js" type="text/javascript"></script>
+		<link href='index.css' rel='stylesheet' type='text/css'>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="user-scalable=no" />
+	</head>
+	<body id="body">
+		<div id="header">
+		<div id="menu" class="cl" onclick="menu();" ontouchstart="return true;">
+		</div>
+		<div id="logo">iHabi Messenger</div>
+		</div>
+		<div id="menu-bar">
+		<div id="item"></div>
+		<div id="item"></div>
+		<div id="item"></div>
+		<div id="item" onclick="logout();">Sair</div>
+		</div>
+		<div id="fade"></div>
+		
+		<div class="content" id="login" style="display:block">
+			<div id="make" class="cl2">Fazer login</div>
+			<div id="space">
+				<div id="sp-login">
+					<form name="login" action="" onsubmit="return false;">
+					<input name="login-user" type="text" placeholder="Nome de usuário ou e-mail" id="login" required=""></input>
+					<input name="login-password" placeholder="Senha" id="login_senha" type="password" required=""></input>
+					<div onclick="valida_login();" ontouchstart="return true;" class="cl" id="sub"></div>
+					</form>
+				</div>
+			</div>
+		</div>
+		<div id="hidden"></div>
+		<div id="status"></div>
+	</body>
+</html>

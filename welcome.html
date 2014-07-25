@@ -1,0 +1,79 @@
+<html><head>
+		<link href="index.css" rel="stylesheet" type="text/css">
+		<meta charset="UTF-8">
+		<meta name="viewport" content="user-scalable=no">
+	<script>
+	function butt(value)
+	{
+		window.localStorage.setItem('welcome', 'true');
+		if(value == 1)
+		{		
+			window.open('market://details?id=com.sendoo.smsfree');
+			setTimeout(function(){window.location='./index.html'},300);
+		}
+		else
+		{
+			setTimeout(function(){window.location='./index.html'},300);
+		}
+	}
+   </script></head>
+   
+	<body id="body">
+		<div id="header">
+		<div id="logo" style="font-size: 20px;
+left: 70;
+top: 10;
+left:50%;
+width:320px;
+text-align:center;
+margin-left:-150;">Seja bem-vindo ao IHabi Messenger =)</div>
+		</div>
+		<img src="icon.jpg" height="200px" style="
+    position: absolute;
+    left: 50%;
+    margin-left: -100;
+    margin-top: 43;
+" onclick="butt(0);"><div style="
+    position: absolute;
+    left: 0;
+    top: 242;
+    color: rgb(88, 88, 88);
+    font-size: 17;
+    width: 100%;
+    text-align: center;
+">Agora você já pode enviar mensagens gratuitamente para todos os seus amigos!<br><br>Só não se esqueça de nos avaliar na Google Play!
+<br><br>
+ <center> <div style="
+    max-width: 160px;
+    height: 60;
+	margin-left: auto;
+	margin-right: auto;
+"><div style="
+width: 160px;
+height: 20px;
+background: rgb(49, 111, 66);
+border-radius: 9;
+padding: 5;
+color: rgba(255, 255, 255, 0.77);
+font-size: 16;
+font-family: Verdana;
+float: left;
+margin-bottom:13px;
+" onclick="butt(1);">Avaliar agora</div>
+  <div style="
+width: 160px;
+height: 20px;
+background: rgb(111, 49, 49);
+border-radius: 9;
+padding: 5;
+color: rgba(255, 255, 255, 0.77);
+font-size: 16;
+font-family: Verdana;
+float: left;
+" onclick="butt(0);">Não quero ajudar</div></div></center>
+
+</div>
+
+
+	
+</body></html>

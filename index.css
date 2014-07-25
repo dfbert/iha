@@ -1,0 +1,292 @@
+		* {
+			-webkit-tap-highlight-color: rgba(0, 0, 0, 0);  
+			-webkit-user-modify: read-plaintext-only;
+			outline: none;
+		} 
+		body
+		{
+			position: absolute;
+			width: 100%;
+			left: 0px;
+			top: 0px;
+			overflow: hidden;
+			margin:0px;
+			background: url('bar.png');
+			color: white;
+		}
+		.cl:active
+		{
+			-webkit-transform: scale3d(0.9, 0.9, 1);
+		}
+		@font-face
+		{
+			font-family: 'Ubuntu';
+			font-style: normal;
+			font-weight: 700;
+			src: local('Ubuntu Bold'), local('Ubuntu-Bold'), url(font.woff) format('woff');
+		}
+		#header
+		{
+			width: 100%;
+			height: 45px;
+			position: fixed;
+			top: 0px;
+			background-color: #3B9868;
+			border-bottom: 1px solid #328313;
+			left: 0px;
+			z-index: 10;
+		}
+		#menu
+		{
+			position: absolute;
+			left: 11;
+			top: -4;
+			width: 40px;
+			height: 40px;
+			background: url('menu.png');
+		}
+		#menu-bar
+		{
+			width: 200px;
+			height: 100%;
+			background: rgb(228, 228, 228);
+			position: absolute;
+			left: -200px;
+			top: 38px;
+			transition: 0.3s left;
+			-webkit-transition: 0.3s left;
+			z-index: 20;
+		}
+		#item
+		{
+			width: 200px;
+			height: 45px;
+			border-top: 1px solid rgba(255, 255, 255, 1);
+			border-bottom: 1px solid rgba(0, 0, 0, 0.27);
+			text-align: center;
+			font-size: 30;
+			color: rgb(129, 129, 129);
+			font-family: 'Ubuntu', sans-serif;
+			font-weight: bold;
+			font-variant: small-caps;
+			padding-top: 5;
+		}
+		#fade
+		{
+			width: 0;
+			height: 0;
+			position: absolute;
+			top: 0;
+			left: 0;
+			background: black;
+			z-index:5;
+			transition: 0.1s opacity;
+			-webkit-transition: 0.1s opacity;
+			opacity: 0;
+		}
+		#logo
+		{
+			position: absolute;
+			color: white;
+			font-size: 30px;
+			left: 70;
+			top: 2;
+			font-family: 'Ubuntu', sans-serif;
+			font-weight: bold;
+			font-variant: small-caps;
+		}
+		.content
+		{
+			top: 50px;
+			width: 260;
+			position: absolute;
+			left: 50%;
+			margin-left: -130;
+		}
+		#hidden
+		{
+			background: rgba(255, 255, 255, 0.94);
+			position: fixed;
+			left: 0;
+			top: 0;
+			width: 100%;
+			height: 100%;
+			background-image: url('preview.gif');
+			background-repeat: no-repeat;
+			background-position: center;
+			display:none;
+			z-index:999;
+			-webkit-filter: invert(0.1);
+		}
+		#status
+		{
+			background: rgba(0, 0, 0, 0.78);
+			position: absolute;
+			left: 50%;
+			top: 100px;
+			width: 0;
+			height: 0;
+			border-radius: 10;
+			margin-left: -150px;
+			background-repeat: no-repeat;
+			background-position: center;
+			color: white;
+			text-align: center;
+			padding: 10px;
+			opacity:0;
+			transition: 1s opacity;
+			-webkit-transition: 1s opacity;
+		}
+		#login #make
+		{
+			padding: 10px;
+			background: rgb(150, 150, 150);
+			border-top-left-radius: 5;
+			border-top-right-radius: 5;
+			text-align: center;
+			font-family: 'Ubuntu', sans-serif;
+			font-weight: bold;
+			font-variant: small-caps;
+			color: white;
+		}
+		#login #space
+		{
+			padding: 10px;
+			background: rgb(87, 87, 87);
+			text-align: center;
+			transition: 0.1s;
+			-webkit-transition: 0.1s;
+			height: 200px;
+		}
+		#login #create
+		{
+		    padding: 10px;
+			background: rgb(81, 139, 86);
+			border-bottom-left-radius: 5;
+			border-bottom-right-radius: 5;
+			text-align: center;
+			font-family: 'Ubuntu', sans-serif;
+			font-weight: bold;
+			font-variant: small-caps;
+			color: white;
+		}
+		#sp-login
+		{
+			display:block;
+		}
+		#sp-login #login
+		{
+			width: 235;
+			height: 55;
+			font-size: 16;
+			text-align: center;
+			float: left;
+			border-top-right-radius: 10px;
+			border-top-left-radius: 10px;
+			border: 1px solid rgb(221, 221, 221);
+		}
+		#sp-login #login_senha
+		{
+			width: 235;
+			height: 55;
+			font-size: 16;
+			text-align: center;
+			float: left;
+			border-bottom-right-radius: 10px;
+			border-bottom-left-radius: 10px;
+			margin-top: 3;
+			border: 1px solid rgb(221, 221, 221);
+		}
+		#sp-login #sub
+		{
+			position: absolute;
+			width: 260px;
+			height: 40;
+			background: url('botaoEnviar.png');
+			background-repeat: no-repeat;
+			background-position: center;
+			margin-top: 130;
+			margin-left: -10;
+		}
+		div#body {
+			width: 100%;
+			height: 100%;
+			position: absolute;
+<<<<<<< HEAD
+=======
+			top: -8px;
+>>>>>>> 7fd2935f8538633f8838e13eb75818ba3724c31f
+		}
+		.friend #av {
+			width: 64px;
+			height: 64px;
+			background-color: rgb(173, 173, 173) !important;
+			background-position: center -13px !important;
+			border-radius: 100%;
+			border: 3px solid white;
+			float: left;
+			margin-right: 14px;
+		}
+		#body h1{
+			background: rgb(58, 58, 58);
+			width: 100%;
+			margin: 46px 0 0 0;
+<<<<<<< HEAD
+			padding: 9px 9px 9px 0px;
+			font-family: 'Ubuntu', sans-serif;
+			font-weight: bold;
+			font-variant: small-caps;
+			text-align: left;
+			height: 35px;
+=======
+			padding: 9px;
+			font-family: 'Ubuntu', sans-serif;
+			font-weight: bold;
+			font-variant: small-caps;
+			text-align: center;
+>>>>>>> 7fd2935f8538633f8838e13eb75818ba3724c31f
+		}
+		#amigos-sem{
+			border-top: 1px solid black;
+			width: 100%;
+		}
+		.friend {
+			background: rgb(43, 43, 43);
+			padding: 7;
+			border-bottom: 1px solid rgb(63, 63, 63);
+			height: 70px;
+		}
+		#friend-username{
+			font-size: 28px;
+			font-family: 'Ubuntu', sans-serif;
+			font-weight: bold;
+			font-variant: small-caps;
+		}
+		#friend-motto{
+			font-family: sans-serif;
+			margin-top: 8;
+		}
+<<<<<<< HEAD
+		#avatar div{
+			width: 89px;
+			height: 44px;
+			float: left;
+			background-position: center -22px !important;
+		}
+		#body h1::after {
+			content: "(Atualizar)";
+			font-size: 14px;
+			margin-left: 8px;
+		}
+		#back::after {
+			content: "<";
+			float: left;
+			background: white;
+			padding: 8px;
+			color: rgb(97, 97, 97);
+			border-radius: 4px;
+			margin: -2px 19px 0 18px;
+			font-size: 23px;
+		}
+=======
+>>>>>>> 7fd2935f8538633f8838e13eb75818ba3724c31f
