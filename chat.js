@@ -119,20 +119,8 @@
 	}
 	
 	function send_message(to, txt, myname){
-			var hehe = {
-			type: 'msg',
-			message: txt,
-			name: myname,
-			friend: to
-			};
-			var hehe2 = {
-			type: 'callback',
-			message: txt,
-			name: myname,
-			friend: to
-			};
-			websocket.send(JSON.stringify(hehe));
-			websocket.send(JSON.stringify(hehe2));
+			websocket.send(JSON.stringify({ 			type: 'msg', 			message: txt, 			name: myname, 			friend: to 			}));
+			websocket.send(JSON.stringify({ 			type: 'callback', 			message: txt, 			name: myname, 			friend: to 			}));
 	}
 	$( "#former" ).submit(function( event ) {
 		var mymessage = $('#texarea').val(); //get message text
@@ -163,20 +151,6 @@
 				};
 				websocket.send(JSON.stringify(auth));
 				document.getElementById('hidden').style.display='none'; //desaciona animação de carregamento
-			}
-			if(type == 'sync')
-			{
-				//função de sincronização
-				
-				if(last == 'true'){
-				var sync = {
-				type: 'sync',
-				name: ''+__myusername+'',
-				password: window.localStorage.getItem('auth_pass'),
-				message: 'ok'
-				};
-				websocket.send(JSON.stringify(sync));
-				}
 			}
 			if(type == 'callback')
 			{
