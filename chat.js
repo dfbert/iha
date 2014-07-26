@@ -4,6 +4,8 @@
 		
 		websocket.onopen = function(ev) { // connection is open 
 		}	
+	var __myusername = window.localStorage.getItem('auth_login');
+	var friendname = getUrlVars()["friendname"].toUpperCase();
 
 	function fetch(user, pass, paramm, divid, friend)
 	{	
@@ -63,9 +65,8 @@
 		}
 		return vars;
 	}
-	var friendname = getUrlVars()["friendname"].toUpperCase();
 	document.getElementById('frindname').innerHTML='<div id="back" onclick="go_to(\'me.html\');"></div><div id="avatar"></div><div style="float:left;">'+friendname+'</div>';
-	fetch(window.localStorage.getItem('auth_login'), window.localStorage.getItem('auth_pass'), 'look', 'avatar', friendname);
+	fetch(__myusername, window.localStorage.getItem('auth_pass'), 'look', 'avatar', friendname);
 	document.getElementById('myavtr').innerHTML=window.localStorage.getItem('look');
 	var chaaa = window.localStorage.getItem(friendname+'_chatlogs');
 	if(chaaa !== null){
@@ -124,11 +125,18 @@
 			name: myname,
 			friend: to
 			};
+			var hehe2 = {
+			type: 'callback',
+			message: txt,
+			name: myname,
+			friend: to
+			};
 			websocket.send(JSON.stringify(hehe));
+			websocket.send(JSON.stringify(hehe2));
 	}
 	$( "#former" ).submit(function( event ) {
 		var mymessage = $('#texarea').val(); //get message text
-		send_message(friendname, mymessage, window.localStorage.getItem('auth_login'));
+		send_message(friendname, mymessage, __myusername);
 		$('#texarea').val(''); //get message text
 		event.preventDefault();
 	});
@@ -142,15 +150,15 @@
 
 			if(type == 'usermsg') 
 			{
-				add_msg_to_db(uname, window.localStorage.getItem('auth_login'), umsg, 'getting', timee);
+				add_msg_to_db(uname, __myusername, umsg, 'getting', timee);
 				$( "#displayer" ).append( "<div id=\"friend\">"+umsg+"</div>" );
 			}
 			if(type == 'auth')
 			{
 				var auth = {
 				type: 'auth',
-				name: 'colaquente',
-				password: '32344870',
+				name: ''+__myusername+'',
+				password: window.localStorage.getItem('auth_pass'),
 				message: ''+umsg+''
 				};
 				websocket.send(JSON.stringify(auth));
@@ -163,8 +171,8 @@
 				if(last == 'true'){
 				var sync = {
 				type: 'sync',
-				name: 'colaquente',
-				password: '32344870',
+				name: ''+__myusername+'',
+				password: window.localStorage.getItem('auth_pass'),
 				message: 'ok'
 				};
 				websocket.send(JSON.stringify(sync));
@@ -172,7 +180,7 @@
 			}
 			if(type == 'callback')
 			{
-				add_msg_to_db(window.localStorage.getItem('auth_login'), uname, umsg, 'sending', timee);
+				add_msg_to_db(__myusername, uname, umsg, 'sending', timee);
 				$( "#displayer" ).append( "<div id=\"me\">"+umsg+"</div>" );
 			}
 			if(type == 'logout')
