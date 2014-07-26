@@ -37,7 +37,7 @@
 		}
 		#boxt input{
 			width: 72px;
-			height: 100%;
+			height: 58px;
 			margin: 10px 9px;
 			background: rgb(153, 153, 153);
 			border: none;
@@ -55,6 +55,36 @@
 			width: 100%;
 			height: 100%;
 			background-position: center -8px !important;
+		}
+		div#displayer {
+			width: 100%;
+			height: calc(100% - 175px);
+			position: fixed;
+			top: 100px;
+			overflow-x: hidden;
+			overflow-y: auto;
+		}
+
+		#displayer div {
+			border: 1px solid rgb(63, 63, 63);
+			margin: 5px 0;
+			border-radius: 5px;
+			width: calc(100% - 110px);
+			padding: 10px 15px;
+			color: black;
+			font-family: Helvetica, Arial, 'lucida grande',tahoma,verdana,arial,sans-serif;
+			font-size: 12px;
+		}
+		#displayer #me {
+		margin-right: 30px;
+		float: right;
+		background: rgb(220, 240, 215);
+		
+		}
+		#displayer #friend {
+		margin-left: 30px;
+		float: left;
+		background: white;
 		}
 		</style>
 	</head>
@@ -75,10 +105,15 @@
 		<div id="body">
 		<h1 id="frindname">
 		</h1>
+		<div id="displayer">
+		<div id="friend">Fala parça haahah</div>
+		</div>
 		<div id="boxt">
-		<div id="myavtr"></div>
-		<textarea></textarea>
-		<input type="submit"></submit>
+			<div id="myavtr"></div>
+			<form id="former">
+			<textarea id="texarea"></textarea>
+			<input type="submit"></submit>
+			</form>
 		</div>
 
 		<div id="hidden"></div>

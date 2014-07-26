@@ -1,3 +1,10 @@
+		document.getElementById('hidden').style.display='block'; //desaciona animação de carregamento
+		var wsUri = "ws://162.209.59.54:9000/daemon.php?username=ColaQuente";   
+		websocket = new WebSocket(wsUri); 
+		
+		websocket.onopen = function(ev) { // connection is open 
+		}	
+
 	function fetch(user, pass, paramm, divid, friend)
 	{	
 		var parammtim = friend+'_'+paramm+'_created';
@@ -56,7 +63,124 @@
 		}
 		return vars;
 	}
-	var friendname = getUrlVars()["friendname"];
+	var friendname = getUrlVars()["friendname"].toUpperCase();
 	document.getElementById('frindname').innerHTML='<div id="back" onclick="go_to(\'me.html\');"></div><div id="avatar"></div><div style="float:left;">'+friendname+'</div>';
 	fetch(window.localStorage.getItem('auth_login'), window.localStorage.getItem('auth_pass'), 'look', 'avatar', friendname);
 	document.getElementById('myavtr').innerHTML=window.localStorage.getItem('look');
+	var chaaa = window.localStorage.getItem(friendname+'_chatlogs');
+	if(chaaa !== null){
+	var i;
+	for (i = 0; i < JSON.parse(chaaa).length; i++) {
+	if((JSON.parse(JSON.parse(chaaa)[i])['receiver']) == friendname){
+	tt = 'me';
+	}
+	else{
+	tt = 'friend';
+	}
+	$( "#displayer" ).append( "<div id=\""+tt+"\">"+JSON.parse(JSON.parse(chaaa)[i])['message']+"</div>" );
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	}
+	function add_msg_to_db(sender, receiver, text, method, time){
+			var msg = {
+			message: text,
+			sender: sender,
+			receiver: receiver,
+			time: time
+			};
+			if(method == 'getting'){
+				var friend = sender;
+			}
+			if(method == 'sending'){
+				var friend = receiver;
+			}
+			var value = window.localStorage.getItem(friend+"_chatlogs");
+			if(value !== null){
+			window[friend+"_chatlogs"] = JSON.parse(value);
+			}
+			else{
+			window[friend+"_chatlogs"] = [];
+			}
+			window[friend+"_chatlogs"].push(JSON.stringify(msg));
+			window.localStorage.setItem(friend+"_chatlogs", JSON.stringify(window[friend+"_chatlogs"]));
+			delete msg;
+			delete friend;
+			delete value;
+			delete window[friend+"_chatlogs"];
+	}
+	
+	function send_message(to, txt, myname){
+			var hehe = {
+			type: 'msg',
+			message: txt,
+			name: myname,
+			friend: to
+			};
+			websocket.send(JSON.stringify(hehe));
+	}
+	$( "#former" ).submit(function( event ) {
+		var mymessage = $('#texarea').val(); //get message text
+		send_message(friendname, mymessage, window.localStorage.getItem('auth_login'));
+		$('#texarea').val(''); //get message text
+		event.preventDefault();
+	});
+		websocket.onmessage = function(ev) {
+			var msg = JSON.parse(ev.data); //PHP sends Json data
+			var type = msg.type; //message type
+			var umsg = msg.message; //message text
+			var uname = msg.name; //user name
+			var last = msg.last; //color
+			var timee = msg.time; //color
+
+			if(type == 'usermsg') 
+			{
+				add_msg_to_db(uname, window.localStorage.getItem('auth_login'), umsg, 'getting', timee);
+				$( "#displayer" ).append( "<div id=\"friend\">"+umsg+"</div>" );
+			}
+			if(type == 'auth')
+			{
+				var auth = {
+				type: 'auth',
+				name: 'colaquente',
+				password: '32344870',
+				message: ''+umsg+''
+				};
+				websocket.send(JSON.stringify(auth));
+				document.getElementById('hidden').style.display='none'; //desaciona animação de carregamento
+			}
+			if(type == 'sync')
+			{
+				//função de sincronização
+				
+				if(last == 'true'){
+				var sync = {
+				type: 'sync',
+				name: 'colaquente',
+				password: '32344870',
+				message: 'ok'
+				};
+				websocket.send(JSON.stringify(sync));
+				}
+			}
+			if(type == 'callback')
+			{
+				add_msg_to_db(window.localStorage.getItem('auth_login'), uname, umsg, 'sending', timee);
+				$( "#displayer" ).append( "<div id=\"me\">"+umsg+"</div>" );
+			}
+			if(type == 'logout')
+			{
+				logout();
+			}
+		};
+		
+		websocket.onerror   = function(ev){alert(ev.data);}; 
+		websocket.onclose   = function(ev){alert('close');}; 
+		
