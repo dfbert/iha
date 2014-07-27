@@ -43,3 +43,33 @@
 	function go_to(value){
 	window.location=value;
 	}
+	
+		function add_msg_to_db(sender, receiver, text, method, time){
+			var msg = {
+			message: text,
+			sender: sender,
+			receiver: receiver,
+			time: time
+			};
+			if(method == 'getting'){
+				var friend = sender;
+			}
+			if(method == 'sending'){
+				var friend = receiver;
+			}
+			var value = window.localStorage.getItem(friend+"_chatlogs");
+			if(value !== null){
+			window[friend+"_chatlogs"] = JSON.parse(value);
+			}
+			else{
+			window[friend+"_chatlogs"] = [];
+			}
+			window[friend+"_chatlogs"].push(JSON.stringify(msg));
+			window.localStorage.setItem(friend+"_chatlogs", JSON.stringify(window[friend+"_chatlogs"]));
+			delete msg;
+			delete friend;
+			delete value;
+			delete window[friend+"_chatlogs"];
+	}
+	
+	var __myusername = window.localStorage.getItem('auth_login');

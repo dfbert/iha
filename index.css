@@ -219,6 +219,7 @@
 			overflow-y: auto;
 			max-width: 100%;
 			margin: 0px;
+			background: rgb(43, 43, 43);
 		}
 		.friend #av {
 			width: 64px;
@@ -240,6 +241,7 @@
 			text-align: left;
 			height: 35px;
 			margin: 0px;
+			overflow: hidden;
 		}
 		#amigos-sem{
 			border-top: 1px solid black;
@@ -281,4 +283,13 @@
 			border-radius: 4px;
 			margin: -2px 19px 0 18px;
 			font-size: 23px;
+		}
+		#amigos span {
+			text-align: center;
+			width: 100%;
+			position: absolute;
+			font-size: 1.2em;
+			padding-top: 43px;
+			color: rgb(247, 247, 247);
+			font-family: Ubuntu;
 		}

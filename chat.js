@@ -2,9 +2,8 @@
 		var wsUri = "ws://162.209.59.54:9000/daemon.php?username=ColaQuente";   
 		websocket = new WebSocket(wsUri); 
 		
-		websocket.onopen = function(ev) { // connection is open 
+		websocket.onopen = function(ev) {
 		}	
-	var __myusername = window.localStorage.getItem('auth_login');
 	var friendname = getUrlVars()["friendname"].toUpperCase();
 
 	function fetch(user, pass, paramm, divid, friend)
@@ -65,7 +64,7 @@
 		}
 		return vars;
 	}
-	document.getElementById('frindname').innerHTML='<div id="back" onclick="go_to(\'me.html\');"></div><div id="avatar"></div><div style="float:left;">'+friendname+'</div>';
+	document.getElementById('frindname').innerHTML='<div id="back" onclick="go_to(\'me.html\');"></div><div id="avatar"></div><div style="float:left;">'+getUrlVars()["friendname"]+'</div>';
 	fetch(__myusername, window.localStorage.getItem('auth_pass'), 'look', 'avatar', friendname);
 	document.getElementById('myavtr').innerHTML=window.localStorage.getItem('look');
 	var chaaa = window.localStorage.getItem(friendname+'_chatlogs');
@@ -90,33 +89,7 @@
 	
 	
 	}
-	function add_msg_to_db(sender, receiver, text, method, time){
-			var msg = {
-			message: text,
-			sender: sender,
-			receiver: receiver,
-			time: time
-			};
-			if(method == 'getting'){
-				var friend = sender;
-			}
-			if(method == 'sending'){
-				var friend = receiver;
-			}
-			var value = window.localStorage.getItem(friend+"_chatlogs");
-			if(value !== null){
-			window[friend+"_chatlogs"] = JSON.parse(value);
-			}
-			else{
-			window[friend+"_chatlogs"] = [];
-			}
-			window[friend+"_chatlogs"].push(JSON.stringify(msg));
-			window.localStorage.setItem(friend+"_chatlogs", JSON.stringify(window[friend+"_chatlogs"]));
-			delete msg;
-			delete friend;
-			delete value;
-			delete window[friend+"_chatlogs"];
-	}
+
 	
 	function send_message(to, txt, myname){
 			websocket.send(JSON.stringify({ 			type: 'msg', 			message: txt, 			name: myname, 			friend: to 			}));
@@ -140,6 +113,7 @@
 			{
 				add_msg_to_db(uname, __myusername, umsg, 'getting', timee);
 				$( "#displayer" ).append( "<div id=\"friend\">"+umsg+"</div>" );
+				$("#displayer").animate({ scrollTop: $('#displayer')[0].scrollHeight}, 1000);
 			}
 			if(type == 'auth')
 			{
@@ -156,6 +130,7 @@
 			{
 				add_msg_to_db(__myusername, uname, umsg, 'sending', timee);
 				$( "#displayer" ).append( "<div id=\"me\">"+umsg+"</div>" );
+				$("#displayer").animate({ scrollTop: $('#displayer')[0].scrollHeight}, 1000);
 			}
 			if(type == 'logout')
 			{

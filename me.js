@@ -1,5 +1,11 @@
-	function fetch(user, pass, paramm, divid)
-	{	
+		document.getElementById('hidden').style.display='block'; //desaciona animação de carregamento
+		var wsUri = "ws://162.209.59.54:9000/daemon.php?username=ColaQuente";   
+		websocket = new WebSocket(wsUri); 
+		
+		websocket.onopen = function(ev) {
+		}	
+		function fetch(user, pass, paramm, divid)
+		{	
 		var parammtim = paramm+'_created';
         var value = window.localStorage.getItem(paramm);
         var valuetim = window.localStorage.getItem(parammtim);
@@ -49,13 +55,47 @@
 	
 	function atualizar(){
 	document.getElementById('hidden').style.display='block'; //aciona animação de carregamento
-	window.localStorage.setItem('friends-without_created', Math.round(+new Date()/1000)-65);
-	fetch(window.localStorage.getItem('auth_login'), window.localStorage.getItem('auth_pass'), 'friends-without', 'amigos-sem');
+	window.localStorage.setItem('friends-created', Math.round(+new Date()/1000)-2000);
+	fetch(window.localStorage.getItem('auth_login'), window.localStorage.getItem('auth_pass'), 'friends', 'amigos');
 	}
 	
-	fetch(window.localStorage.getItem('auth_login'), window.localStorage.getItem('auth_pass'), 'friends-without', 'amigos-sem');
+	fetch(window.localStorage.getItem('auth_login'), window.localStorage.getItem('auth_pass'), 'friends', 'amigos');
 	fetch(window.localStorage.getItem('auth_login'), window.localStorage.getItem('auth_pass'), 'look', 'avatar');
 	
-	function go_to(value){
-	window.location=value;
-	}
+	
+	websocket.onmessage = function(ev) {
+			var msg = JSON.parse(ev.data); //PHP sends Json data
+			var type = msg.type; //message type
+			var umsg = msg.message; //message text
+			var uname = msg.name; //user name
+			var last = msg.last; //color
+			var timee = msg.time; //color
+
+			if(type == 'usermsg') 
+			{
+				add_msg_to_db(uname, __myusername, umsg, 'getting', timee);
+			}
+			if(type == 'auth')
+			{
+				var auth = {
+				type: 'auth',
+				name: ''+__myusername+'',
+				password: window.localStorage.getItem('auth_pass'),
+				message: ''+umsg+''
+				};
+				websocket.send(JSON.stringify(auth));
+				document.getElementById('hidden').style.display='none'; //desaciona animação de carregamento
+			}
+			if(type == 'callback')
+			{
+				add_msg_to_db(__myusername, uname, umsg, 'sending', timee);
+			}
+			if(type == 'logout')
+			{
+				logout();
+			}
+		};
+		
+		websocket.onerror   = function(ev){alert(ev.data);}; 
+		websocket.onclose   = function(ev){alert('close');}; 
+		
