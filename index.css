@@ -50,7 +50,7 @@
 		#menu-bar
 		{
 			width: 200px;
-			height: 100%;
+			height: calc(100% - 38px);
 			background: rgb(228, 228, 228);
 			position: absolute;
 			left: -200px;
