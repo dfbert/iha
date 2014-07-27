@@ -38,14 +38,14 @@
 			left: 0px;
 			z-index: 10;
 		}
-		#menu
-		{
+		#menu {
 			position: fixed;
-			left: -200px;
-			top: 47px;
+			left: 24px;
+			top: 0;
 			width: 40px;
 			height: 40px;
 			background: url('menu.png');
+			z-index: 11;
 		}
 		#menu-bar
 		{
@@ -86,16 +86,16 @@
 			-webkit-transition: 0.1s opacity;
 			opacity: 0;
 		}
-		#logo
-		{
-			position: absolute;
+		#logo {
 			color: white;
 			font-size: 30px;
-			left: 70;
-			top: 2;
 			font-family: 'Ubuntu', sans-serif;
 			font-weight: bold;
 			font-variant: small-caps;
+			width: 287px;
+			position: fixed;
+			left: 72px;
+			margin-top: 6px;
 		}
 		.content
 		{
