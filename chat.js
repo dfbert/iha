@@ -1,10 +1,21 @@
-		document.getElementById('hidden').style.display='block'; //desaciona animação de carregamento
-		var wsUri = "ws://162.209.59.54:9000/daemon.php?username=ColaQuente";   
-		websocket = new WebSocket(wsUri); 
-		
-		websocket.onopen = function(ev) {
-		}	
-	var friendname = getUrlVars()["friendname"].toUpperCase();
+  var socket = io('http://up1.dfbert.com:666', {transports: ['websocket']});
+  socket.emit('auth', { username: window.__myusername, password: window.__mypass });
+  socket.on('auth', function (data) {
+	if(data.welcome != true){
+		logout();
+	}
+  });  
+    socket.on('message', function (data) {
+		add_msg_to_db(data.username, data.friend, data.msg, 'getting', data.time);
+		$( "#displayer" ).append( "<div id=\"friend\">"+umsg+"</div>" );
+		$("#displayer").animate({ scrollTop: $('#displayer')[0].scrollHeight}, 1000);
+  });
+    socket.on('callback', function (data) {
+		add_msg_to_db(data.username, data.friend, data.msg, 'sending', data.time);
+		$( "#displayer" ).append( "<div id=\"me\">"+data.msg+"</div>" );
+		$("#displayer").animate({ scrollTop: $('#displayer')[0].scrollHeight}, 1000);
+  });
+  window.friendname = getUrlVars()["friendname"].toUpperCase();
 
 	function fetch(user, pass, paramm, divid, friend)
 	{	
@@ -64,14 +75,15 @@
 		}
 		return vars;
 	}
+	
 	document.getElementById('frindname').innerHTML='<div id="back" onclick="go_to(\'me.html\');"></div><div id="avatar"></div><div style="float:left;">'+getUrlVars()["friendname"]+'</div>';
-	fetch(__myusername, window.localStorage.getItem('auth_pass'), 'look', 'avatar', friendname);
+	fetch(__myusername, window.localStorage.getItem('auth_pass'), 'look', 'avatar', window.friendname);
 	document.getElementById('myavtr').innerHTML=window.localStorage.getItem('look');
-	var chaaa = window.localStorage.getItem(friendname+'_chatlogs');
+	var chaaa = window.localStorage.getItem(window.friendname+'_chatlogs');
 	if(chaaa !== null){
 	var i;
 	for (i = 0; i < JSON.parse(chaaa).length; i++) {
-	if((JSON.parse(JSON.parse(chaaa)[i])['receiver']) == friendname){
+	if((JSON.parse(JSON.parse(chaaa)[i])['receiver']) == window.friendname){
 	tt = 'me';
 	}
 	else{
@@ -80,63 +92,16 @@
 	$( "#displayer" ).append( "<div id=\""+tt+"\">"+JSON.parse(JSON.parse(chaaa)[i])['message']+"</div>" );
 	}
 	
-	
-	
-	
-	
-	
-	
-	
-	
 	}
 
 	
-	function send_message(to, txt, myname){
-			websocket.send(JSON.stringify({ 			type: 'msg', 			message: txt, 			name: myname, 			friend: to 			}));
-			websocket.send(JSON.stringify({ 			type: 'callback', 			message: txt, 			name: myname, 			friend: to 			}));
+	function send_message(txt){
+			socket.emit('message', { username: window.__myusername, password: window.__mypass, friend: window.friendname, msg: txt });
 	}
 	$( "#former" ).submit(function( event ) {
-		var mymessage = $('#texarea').val(); //get message text
-		send_message(friendname, mymessage, __myusername);
-		$('#texarea').val(''); //get message text
+		if($('#texarea').val() != ''){
+		send_message($('#texarea').val());
+		$('#texarea').val('');
+		}
 		event.preventDefault();
 	});
-		websocket.onmessage = function(ev) {
-			var msg = JSON.parse(ev.data); //PHP sends Json data
-			var type = msg.type; //message type
-			var umsg = msg.message; //message text
-			var uname = msg.name; //user name
-			var last = msg.last; //color
-			var timee = msg.time; //color
-
-			if(type == 'usermsg') 
-			{
-				add_msg_to_db(uname, __myusername, umsg, 'getting', timee);
-				$( "#displayer" ).append( "<div id=\"friend\">"+umsg+"</div>" );
-				$("#displayer").animate({ scrollTop: $('#displayer')[0].scrollHeight}, 1000);
-			}
-			if(type == 'auth')
-			{
-				var auth = {
-				type: 'auth',
-				name: ''+__myusername+'',
-				password: window.localStorage.getItem('auth_pass'),
-				message: ''+umsg+''
-				};
-				websocket.send(JSON.stringify(auth));
-				document.getElementById('hidden').style.display='none'; //desaciona animação de carregamento
-			}
-			if(type == 'callback')
-			{
-				add_msg_to_db(__myusername, uname, umsg, 'sending', timee);
-				$( "#displayer" ).append( "<div id=\"me\">"+umsg+"</div>" );
-				$("#displayer").animate({ scrollTop: $('#displayer')[0].scrollHeight}, 1000);
-			}
-			if(type == 'logout')
-			{
-				logout();
-			}
-		};
-		
-		websocket.onerror   = function(ev){alert(ev.data);}; 
-		websocket.onclose   = function(ev){alert('close');}; 
