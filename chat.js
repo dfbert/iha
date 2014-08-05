@@ -1,21 +1,34 @@
   var socket = io('http://up1.dfbert.com:666', {transports: ['websocket']});
+  window.friendname = getUrlVars()["friendname"].toUpperCase();
   socket.emit('auth', { username: window.__myusername, password: window.__mypass });
   socket.on('auth', function (data) {
 	if(data.welcome != true){
-		logout();
+		//logout();
+		console.log(data);
 	}
   });  
     socket.on('message', function (data) {
-		add_msg_to_db(data.username, data.friend, data.msg, 'getting', data.time);
-		$( "#displayer" ).append( "<div id=\"friend\">"+umsg+"</div>" );
-		$("#displayer").animate({ scrollTop: $('#displayer')[0].scrollHeight}, 1000);
+		add_msg_to_db(data.username, data.friend.toUpperCase(), data.msg, 'getting', data.time);
+		if(data.friend.toUpperCase() == window.friendname){
+		$( "#displayer" ).append( "<div id=\"friend\">"+data.msg+"</div>" );
+		$('#displayer').scrollTop($('#displayer')[0].scrollHeight - $('#displayer')[0].clientHeight);
+
+		}
   });
     socket.on('callback', function (data) {
-		add_msg_to_db(data.username, data.friend, data.msg, 'sending', data.time);
+		add_msg_to_db(data.username, data.friend.toUpperCase(), data.msg, 'sending', data.time);
+		if(data.friend.toUpperCase() == window.friendname){
 		$( "#displayer" ).append( "<div id=\"me\">"+data.msg+"</div>" );
-		$("#displayer").animate({ scrollTop: $('#displayer')[0].scrollHeight}, 1000);
+		$('#displayer').scrollTop($('#displayer')[0].scrollHeight - $('#displayer')[0].clientHeight);
+		}
   });
-  window.friendname = getUrlVars()["friendname"].toUpperCase();
+    socket.on('sync', function (data) {
+		add_msg_to_db(data.sender.toUpperCase(), window.__myusername, data.msg, 'getting', data.time);
+		if(data.sender.toUpperCase() == window.friendname){
+		$( "#displayer" ).append( "<div id=\"friend\">"+data.msg+"</div>" );
+		$('#displayer').scrollTop($('#displayer')[0].scrollHeight - $('#displayer')[0].clientHeight);
+		}
+  });
 
 	function fetch(user, pass, paramm, divid, friend)
 	{	
@@ -90,6 +103,7 @@
 	tt = 'friend';
 	}
 	$( "#displayer" ).append( "<div id=\""+tt+"\">"+JSON.parse(JSON.parse(chaaa)[i])['message']+"</div>" );
+	$('#displayer').scrollTop($('#displayer')[0].scrollHeight - $('#displayer')[0].clientHeight);
 	}
 	
 	}
@@ -101,7 +115,7 @@
 	$( "#former" ).submit(function( event ) {
 		if($('#texarea').val() != ''){
 		send_message($('#texarea').val());
-		$('#texarea').val('');
+		$('#texarea').val('asa');
 		}
 		event.preventDefault();
 	});

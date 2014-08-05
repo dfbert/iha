@@ -2,14 +2,29 @@
   socket.emit('auth', { username: window.__myusername, password: window.__mypass });
   socket.on('auth', function (data) {
 	if(data.welcome != true){
-		logout();
+		//logout();
 	}
   });  
     socket.on('message', function (data) {
-		add_msg_to_db(data.username, data.friend, data.msg, 'getting', data.time);
+		add_msg_to_db(data.username, data.friend.toUpperCase(), data.msg, 'getting', data.time);
+		if(data.friend.toUpperCase() == window.friendname){
+		$( "#displayer" ).append( "<div id=\"friend\">"+data.msg+"</div>" );
+		$('#displayer').scrollTop($('#displayer').height());
+		}
   });
     socket.on('callback', function (data) {
-		add_msg_to_db(data.username, data.friend, data.msg, 'sending', data.time);
+		add_msg_to_db(data.username, data.friend.toUpperCase(), data.msg, 'sending', data.time);
+		if(data.friend.toUpperCase() == window.friendname){
+		$( "#displayer" ).append( "<div id=\"me\">"+data.msg+"</div>" );
+		$('#displayer').scrollTop($('#displayer').height());
+		}
+  });
+    socket.on('sync', function (data) {
+		add_msg_to_db(data.sender.toUpperCase(), window.__myusername, data.msg, 'getting', data.time);
+		if(data.sender.toUpperCase() == window.friendname){
+		$( "#displayer" ).append( "<div id=\"friend\">"+data.msg+"</div>" );
+		$('#displayer').scrollTop($('#displayer').height());
+		}
   });
 		function fetch(user, pass, paramm, divid)
 		{	
