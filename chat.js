@@ -3,16 +3,14 @@
   socket.emit('auth', { username: window.__myusername, password: window.__mypass });
   socket.on('auth', function (data) {
 	if(data.welcome != true){
-		//logout();
-		console.log(data);
+		logout();
 	}
   });  
     socket.on('message', function (data) {
 		add_msg_to_db(data.username, data.friend.toUpperCase(), data.msg, 'getting', data.time);
-		if(data.friend.toUpperCase() == window.friendname){
+		if(data.username.toUpperCase() == window.friendname){
 		$( "#displayer" ).append( "<div id=\"friend\">"+data.msg+"</div>" );
 		$('#displayer').scrollTop($('#displayer')[0].scrollHeight - $('#displayer')[0].clientHeight);
-
 		}
   });
     socket.on('callback', function (data) {
@@ -115,7 +113,7 @@
 	$( "#former" ).submit(function( event ) {
 		if($('#texarea').val() != ''){
 		send_message($('#texarea').val());
-		$('#texarea').val('asa');
+		$('#texarea').val('');
 		}
 		event.preventDefault();
 	});
