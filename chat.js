@@ -9,21 +9,21 @@
     socket.on('message', function (data) {
 		add_msg_to_db(data.username, data.friend.toUpperCase(), data.msg, 'getting', data.time);
 		if(data.username.toUpperCase() == window.friendname){
-		$( "#displayer" ).append( "<div id=\"friend\">"+data.msg+"</div>" );
+		$( "#displayer" ).append( "<div id=\"friend\">"+data.msg+"<span id=\"time\">"+new Date(data.time*1000).toISOString().match(/(\d{2}:\d{2})/)[1]+"</span></div>" );
 		$('#displayer').scrollTop($('#displayer')[0].scrollHeight - $('#displayer')[0].clientHeight);
 		}
   });
     socket.on('callback', function (data) {
 		add_msg_to_db(data.username, data.friend.toUpperCase(), data.msg, 'sending', data.time);
 		if(data.friend.toUpperCase() == window.friendname){
-		$( "#displayer" ).append( "<div id=\"me\">"+data.msg+"</div>" );
+		$( "#displayer" ).append( "<div id=\"me\">"+data.msg+"<span id=\"time\">"+new Date(data.time*1000).toISOString().match(/(\d{2}:\d{2})/)[1]+"</span></div>" );
 		$('#displayer').scrollTop($('#displayer')[0].scrollHeight - $('#displayer')[0].clientHeight);
 		}
   });
     socket.on('sync', function (data) {
 		add_msg_to_db(data.sender.toUpperCase(), window.__myusername, data.msg, 'getting', data.time);
 		if(data.sender.toUpperCase() == window.friendname){
-		$( "#displayer" ).append( "<div id=\"friend\">"+data.msg+"</div>" );
+		$( "#displayer" ).append( "<div id=\"friend\">"+data.msg+"<span id=\"time\">"+new Date(data.time*1000).toISOString().match(/(\d{2}:\d{2})/)[1]+"</span></div>" );
 		$('#displayer').scrollTop($('#displayer')[0].scrollHeight - $('#displayer')[0].clientHeight);
 		}
   });
@@ -90,7 +90,7 @@
 	document.getElementById('frindname').innerHTML='<div id="back" onclick="go_to(\'me.html\');"></div><div id="avatar"></div><div style="float:left;">'+getUrlVars()["friendname"]+'</div>';
 	fetch(__myusername, window.localStorage.getItem('auth_pass'), 'look', 'avatar', window.friendname);
 	document.getElementById('myavtr').innerHTML=window.localStorage.getItem('look');
-	var chaaa = window.localStorage.getItem(window.friendname+'_chatlogs');
+	var chaaa = window.localStorage.getItem(window.__myusername+'_'+window.friendname+'_chatlogs');
 	if(chaaa !== null){
 	var i;
 	for (i = 0; i < JSON.parse(chaaa).length; i++) {
@@ -100,7 +100,7 @@
 	else{
 	tt = 'friend';
 	}
-	$( "#displayer" ).append( "<div id=\""+tt+"\">"+JSON.parse(JSON.parse(chaaa)[i])['message']+"</div>" );
+	$( "#displayer" ).append( "<div id=\""+tt+"\">"+JSON.parse(JSON.parse(chaaa)[i])['message']+"<span id=\"time\">"+new Date(JSON.parse(JSON.parse(chaaa)[i])['time']*1000).toISOString().match(/(\d{2}:\d{2})/)[1]+"</span></div>" );
 	$('#displayer').scrollTop($('#displayer')[0].scrollHeight - $('#displayer')[0].clientHeight);
 	}
 	

@@ -1,4 +1,6 @@
 
+	window.__myusername = window.localStorage.getItem('auth_login');
+	window.__mypass = window.localStorage.getItem('auth_pass');
 	
 	function status(value, msg, time){  //função do fade-popup
 	if(value == 'open'){
@@ -35,7 +37,13 @@
 	
 	function logout(){
 	menu('fechar');
-	window.localStorage.clear();
+	localStorage.removeItem("auth");
+	localStorage.removeItem("auth_login");
+	localStorage.removeItem("auth_pass");
+	localStorage.removeItem("friends");
+	localStorage.removeItem("friends-created");
+	localStorage.removeItem("look");
+	localStorage.removeItem("look-created");
 	window.localStorage.setItem('welcome', 'true');
 	window.location='./index.html';
 	}
@@ -57,7 +65,7 @@
 			if(method == 'sending'){
 				var friend = receiver;
 			}
-			var value = window.localStorage.getItem(friend+"_chatlogs");
+			var value = window.localStorage.getItem(window.__myusername+'_'+friend+"_chatlogs");
 			if(value !== null){
 			window[friend+"_chatlogs"] = JSON.parse(value);
 			}
@@ -65,13 +73,11 @@
 			window[friend+"_chatlogs"] = [];
 			}
 			window[friend+"_chatlogs"].push(JSON.stringify(msg));
-			window.localStorage.setItem(friend+"_chatlogs", JSON.stringify(window[friend+"_chatlogs"]));
+			window.localStorage.setItem(window.__myusername+'_'+friend+"_chatlogs", JSON.stringify(window[friend+"_chatlogs"]));
 			delete msg;
 			delete friend;
 			delete value;
 			delete window[friend+"_chatlogs"];
 	}
 	
-	window.__myusername = window.localStorage.getItem('auth_login');
-	window.__mypass = window.localStorage.getItem('auth_pass');
 	
