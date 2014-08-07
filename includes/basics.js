@@ -86,6 +86,6 @@ function onDeviceReady(){
     document.addEventListener("backbutton", onBackKeyDown, false);
 }
 function onBackKeyDown(){
-    alert('back');
+    alert(window.location.pathname);
     return false;
 }
