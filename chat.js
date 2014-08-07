@@ -1,4 +1,4 @@
-  var socket = io('http://up1.dfbert.com:666', {transports: ['websocket']});
+  var socket = io('http://up1.dfbert.com:666');
   window.friendname = getUrlVars()["friendname"].toUpperCase();
   socket.emit('auth', { username: window.__myusername, password: window.__mypass });
   socket.on('auth', function (data) {

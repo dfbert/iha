@@ -9,9 +9,19 @@
 		<link href='index.css' rel='stylesheet' type='text/css'>
 		<meta charset="UTF-8">
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-		<meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
+		<meta name="viewport" content="user-scalable=no" />
 
 		<style>
+		#body{
+			height: 100%;
+			width: 100%;
+			position: fixed;
+			top: 46px;
+			overflow: hidden;
+			max-width: 100%;
+			margin: 0px;
+			background: rgb(43, 43, 43);
+		}
 		#body h1::after {
 			content: "";
 			font-size: none;
@@ -23,15 +33,15 @@
 		#avatar div{
 			margin: 0 -16px 0 -28 !important;
 		}
-		#boxt{
-			position: fixed;
-			bottom: 0px;
-			width: 100%;
-			left: 0px;
-			height: 75px;
-			background-color: rgb(197, 197, 197);
-			z-index:99999999999;
-		}
+#boxt {
+position: fixed;
+bottom: 0px;
+width: 100%;
+left: 0px;
+height: 75px;
+background-color: rgb(197, 197, 197);
+z-index: 99999999999;
+}
 		#boxt textarea{
 			width: calc(100% - 140px);
 			height: 100%;
@@ -60,15 +70,16 @@
 			height: 100%;
 			background-position: center -8px !important;
 		}
-		div#displayer {
-			width: 100%;
-			height: calc(100% - 175px);
-			position: fixed;
-			top: 100px;
-			overflow-x: hidden;
-			overflow-y: auto;
-			padding-bottom: 26px;
-		}
+div#displayer {
+width: 100%;
+height: 100%;
+top: 55px;
+overflow-x: hidden;
+overflow-y: auto;
+padding-bottom: 26px;
+background: green;
+position: absolute;
+}
 
 		#displayer div {
 			border: 1px solid rgb(63, 63, 63);
@@ -109,6 +120,18 @@
 		div#body {
 			background: none;
 		}
+		#friendname{
+		background: rgb(58, 58, 58);
+width: 100%;
+padding: 9px 9px 9px 0px;
+font-family: 'Ubuntu', sans-serif;
+font-weight: bold;
+font-variant: small-caps;
+text-align: left;
+height: 35px;
+margin: 0px;
+overflow: hidden;
+}
 		</style>
 	</head>
 	<body id="body">
