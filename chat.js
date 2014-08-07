@@ -9,21 +9,21 @@
     socket.on('message', function (data) {
 		add_msg_to_db(data.username, data.friend.toUpperCase(), data.msg, 'getting', data.time);
 		if(data.username.toUpperCase() == window.friendname){
-		$( "#displayer" ).append( "<div id=\"friend\">"+data.msg+"<span id=\"time\">"+new Date(data.time*1000).toISOString().match(/(\d{2}:\d{2})/)[1]+"</span></div>" );
+		$( "#table" ).append( "<tr>   <td><div id=\"friend\">"+data.msg+"<span id=\"time\">"+new Date(data.time*1000).toISOString().match(/(\d{2}:\d{2})/)[1]+"</span></div></td> </tr>" );
 		$('#displayer').scrollTop($('#displayer')[0].scrollHeight - $('#displayer')[0].clientHeight);
 		}
   });
     socket.on('callback', function (data) {
 		add_msg_to_db(data.username, data.friend.toUpperCase(), data.msg, 'sending', data.time);
 		if(data.friend.toUpperCase() == window.friendname){
-		$( "#displayer" ).append( "<div id=\"me\">"+data.msg+"<span id=\"time\">"+new Date(data.time*1000).toISOString().match(/(\d{2}:\d{2})/)[1]+"</span></div>" );
+		$( "#table" ).append( "<tr>   <td><div id=\"me\">"+data.msg+"<span id=\"time\">"+new Date(data.time*1000).toISOString().match(/(\d{2}:\d{2})/)[1]+"</span></div></td> </tr>" );
 		$('#displayer').scrollTop($('#displayer')[0].scrollHeight - $('#displayer')[0].clientHeight);
 		}
   });
     socket.on('sync', function (data) {
 		add_msg_to_db(data.sender.toUpperCase(), window.__myusername, data.msg, 'getting', data.time);
 		if(data.sender.toUpperCase() == window.friendname){
-		$( "#displayer" ).append( "<div id=\"friend\">"+data.msg+"<span id=\"time\">"+new Date(data.time*1000).toISOString().match(/(\d{2}:\d{2})/)[1]+"</span></div>" );
+		$( "#table" ).append( "<tr>   <td><div id=\"friend\">"+data.msg+"<span id=\"time\">"+new Date(data.time*1000).toISOString().match(/(\d{2}:\d{2})/)[1]+"</span></div></td> </tr>" );
 		$('#displayer').scrollTop($('#displayer')[0].scrollHeight - $('#displayer')[0].clientHeight);
 		}
   });
@@ -100,7 +100,7 @@
 	else{
 	tt = 'friend';
 	}
-	$( "#displayer" ).append( "<div id=\""+tt+"\">"+JSON.parse(JSON.parse(chaaa)[i])['message']+"<span id=\"time\">"+new Date(JSON.parse(JSON.parse(chaaa)[i])['time']*1000).toISOString().match(/(\d{2}:\d{2})/)[1]+"</span></div>" );
+	$( "#table" ).append( "<tr>   <td><div id=\""+tt+"\">"+JSON.parse(JSON.parse(chaaa)[i])['message']+"<span id=\"time\">"+new Date(JSON.parse(JSON.parse(chaaa)[i])['time']*1000).toISOString().match(/(\d{2}:\d{2})/)[1]+"</span></div></td> </tr>" );
 	$('#displayer').scrollTop($('#displayer')[0].scrollHeight - $('#displayer')[0].clientHeight);
 	}
 	
