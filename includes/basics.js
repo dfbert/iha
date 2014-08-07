@@ -1,4 +1,11 @@
 
+
+window.onerror = function(msg, url, linenumber) {
+    alert('Error message: '+msg+'\nURL: '+url+'\nLine Number: '+linenumber);
+    return true;
+}
+alert('teste');
+
 	window.__myusername = window.localStorage.getItem('auth_login');
 	window.__mypass = window.localStorage.getItem('auth_pass');
 	
@@ -211,10 +218,5 @@ function onNotificationGCM(e) {
 
 
 
-}
-
-window.onerror = function(msg, url, linenumber) {
-    alert('Error message: '+msg+'\nURL: '+url+'\nLine Number: '+linenumber);
-    return true;
 }
 
