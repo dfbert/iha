@@ -98,7 +98,8 @@ navigator.app.exitApp();
 }
 return false;
 }
-
+var pushNotification;
+pushNotification = window.plugins.pushNotification;
 if ( device.platform == 'android' || device.platform == 'Android' )
 {
     pushNotification.register(
