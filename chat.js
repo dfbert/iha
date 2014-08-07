@@ -87,7 +87,7 @@
 		return vars;
 	}
 	
-	document.getElementById('frindname').innerHTML='<div id="back" onclick="go_to(\'me.html\');"></div><div id="avatar"></div><div style="float:left;">'+getUrlVars()["friendname"]+'</div>';
+	$( "#frindname" ).append('</div><div id="avatar"></div><div style="float:left;">'+getUrlVars()["friendname"]+'</div>');
 	fetch(__myusername, window.localStorage.getItem('auth_pass'), 'look', 'avatar', window.friendname);
 	document.getElementById('myavtr').innerHTML=window.localStorage.getItem('look');
 	var chaaa = window.localStorage.getItem(window.__myusername+'_'+window.friendname+'_chatlogs');
