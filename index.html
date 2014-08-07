@@ -6,14 +6,14 @@
 	var value = window.localStorage.getItem('welcome');
 	var valuea = window.localStorage.getItem('auth');
 	if(value === null){
-		window.location='./welcome.html';
+		window.location.replace('./welcome.html');
 	}
 	else{
 		if(valuea === null){
-			window.location='./login.html';
+			window.location.replace('./login.html');
 		}
 		else{
-			window.location='./me.html';
+			window.location.replace('./me.html');
 		}
 	}	
    </script>

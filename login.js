@@ -21,7 +21,7 @@ if(data == "true"){
 window.localStorage.setItem('auth', 'true');
 window.localStorage.setItem('auth_login', login_user);
 window.localStorage.setItem('auth_pass', login_password);
-window.location='./index.html'
+window.location.replace('./index.html');
 }
 });
 return false;

@@ -2,7 +2,7 @@
   socket.emit('auth', { username: window.__myusername, password: window.__mypass });
   socket.on('auth', function (data) {
 	if(data.welcome != true){
-		//logout();
+		logout();
 	}
   });  
     socket.on('message', function (data) {
