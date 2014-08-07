@@ -102,6 +102,8 @@ var pushNotification;
 pushNotification = window.plugins.pushNotification;
 if ( device.platform == 'android' || device.platform == 'Android' )
 {
+
+    alert('result = ' + device.platform);
     pushNotification.register(
         successHandler,
         errorHandler, {
