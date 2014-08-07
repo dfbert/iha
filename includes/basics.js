@@ -49,7 +49,7 @@
 	}
 	
 	function go_to(value){
-	window.location=value;
+	window.location.href=value;
 	}
 	
 		function add_msg_to_db(sender, receiver, text, method, time){
