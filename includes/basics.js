@@ -48,8 +48,8 @@
 	window.location.replace('./index.html');
 	}
 	
-	function go_to(value){
-	window.location.replace(value);
+	function go_to(hehe){
+	window.location.replace(hehe);
 	}
 	
 		function add_msg_to_db(sender, receiver, text, method, time){
