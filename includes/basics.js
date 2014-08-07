@@ -86,6 +86,15 @@ function onDeviceReady(){
     document.addEventListener("backbutton", onBackKeyDown, false);
 }
 function onBackKeyDown(){
-    alert(window.location.pathname);
-    return false;
+
+var pathArray = window.location.pathname.split( '/' );
+var pathArray = pathArray.pop();
+if(pathArray == 'chat.html'){
+go_to('me.html');
 }
+else{
+navigator.app.exitApp();
+}
+return false;
+}
+
