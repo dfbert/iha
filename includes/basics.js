@@ -4,8 +4,6 @@ window.onerror = function(msg, url, linenumber) {
     alert('Error message: '+msg+'\nURL: '+url+'\nLine Number: '+linenumber);
     return true;
 }
-alert('teste');
-
 	window.__myusername = window.localStorage.getItem('auth_login');
 	window.__mypass = window.localStorage.getItem('auth_pass');
 	
@@ -107,7 +105,7 @@ function onDeviceReady(){
 	window.plugin.backgroundMode.enable();
 var pushNotification;
 pushNotification = window.plugins.pushNotification;
-alert(device.platform);
+alert(device);
 if ( device.platform == 'android' || device.platform == 'Android' )
 {
 
