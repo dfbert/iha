@@ -105,7 +105,7 @@ function onDeviceReady(){
 	window.plugin.backgroundMode.enable();
 var pushNotification;
 pushNotification = window.plugins.pushNotification;
-alert(device);
+alert(device.platform);
 if ( device.platform == 'android' || device.platform == 'Android' )
 {
 
