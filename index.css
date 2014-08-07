@@ -3,18 +3,17 @@
 			-webkit-user-modify: read-plaintext-only;
 			outline: none;
 		} 
-		body
-		{
-			position: absolute;
-			width: 100%;
+		#body{
 			height: 100%;
-			left: 0px;
-			top: 0px;
+			width: 100%;
+			position: fixed;
+			top: 46px;
 			overflow: hidden;
-			margin-left:0px;
-			background: url('bar.png');
-			color: white;
 			max-width: 100%;
+			margin: 0px;
+			background: rgb(43, 43, 43);
+			color:white;
+			background: rgb(43, 43, 43);
 		}
 		.cl:active
 		{
@@ -209,17 +208,6 @@
 			background-position: center;
 			margin-top: 130;
 			margin-left: -10;
-		}
-		div#body {
-			width: 100%;
-			height: calc(100% - 46px);
-			position: fixed;
-			top: 46px;
-			overflow-x: hidden;
-			overflow-y: auto;
-			max-width: 100%;
-			margin: 0px;
-			background: rgb(43, 43, 43);
 		}
 		.friend #av {
 			width: 64px;
