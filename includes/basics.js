@@ -100,6 +100,7 @@ return false;
 }
 var pushNotification;
 pushNotification = window.plugins.pushNotification;
+ alert(device.platform);
 if ( device.platform == 'android' || device.platform == 'Android' )
 {
 
