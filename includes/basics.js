@@ -84,6 +84,7 @@
 
 function onDeviceReady(){
     document.addEventListener("backbutton", onBackKeyDown, false);
+	window.plugin.backgroundMode.enable();
 }
 function onBackKeyDown(){
 

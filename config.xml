@@ -39,6 +39,7 @@
 	<icon src="icon.png" />
 	<icon src="icon.png" gap:platform="android" />
 	<gap:platform name="android" />
+	<gap:plugin name="de.appplant.cordova.plugin.background-mode" version="0.5.0" />
     <!-- Plugins can also be added here. -->
     <!--
         <gap:plugin name="Example" />
