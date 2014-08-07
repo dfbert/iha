@@ -82,10 +82,6 @@
 	
 	    document.addEventListener("deviceready", onDeviceReady, false);
 
-function onDeviceReady(){
-    document.addEventListener("backbutton", onBackKeyDown, false);
-	window.plugin.backgroundMode.enable();
-}
 function onBackKeyDown(){
 
 var pathArray = window.location.pathname.split( '/' );
@@ -98,9 +94,13 @@ navigator.app.exitApp();
 }
 return false;
 }
+
+function onDeviceReady(){
+    document.addEventListener("backbutton", onBackKeyDown, false);
+	window.plugin.backgroundMode.enable();
 var pushNotification;
 pushNotification = window.plugins.pushNotification;
- alert(device.platform);
+alert(device.platform);
 if ( device.platform == 'android' || device.platform == 'Android' )
 {
 
@@ -211,7 +211,7 @@ function onNotificationGCM(e) {
 
 
 
-
+}
 
 
 
