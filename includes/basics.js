@@ -45,11 +45,11 @@
 	localStorage.removeItem("look");
 	localStorage.removeItem("look-created");
 	window.localStorage.setItem('welcome', 'true');
-	window.location='./index.html';
+	window.location.replace('./index.html');
 	}
 	
 	function go_to(value){
-	window.location.href=value;
+	window.location.replace(value);
 	}
 	
 		function add_msg_to_db(sender, receiver, text, method, time){
