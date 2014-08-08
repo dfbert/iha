@@ -1,20 +1,23 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
-   <head>
-      <title>PhoneGap Build Test</title>
-      <script src="phonegap.js"></script>
-      <script src="device.js"></script>
-      <script >
-         document.addEventListener('deviceready',
-                                   onDeviceReady,
-                                   false);
-         function onDeviceReady() {
-            alert("using PhoneGap 3.1.0");
-            alert("model = " + device.model);
-         }
-      </script>
-   </head>
-   <body>
-      <h2>PhoneGap Build Test</h2>
-   </body>
+  <head>
+   <title>tittle</title>
+   <script src="phonegap.js"></script>
+   <script>
+	var value = window.localStorage.getItem('welcome');
+	var valuea = window.localStorage.getItem('auth');
+	if(value === null){
+		window.location.replace('./welcome.html');
+	}
+	else{
+		if(valuea === null){
+			window.location.replace('./login.html');
+		}
+		else{
+			window.location.replace('./me.html');
+		}
+	}	
+   </script>
+  <body>
+  </body>
 </html>
