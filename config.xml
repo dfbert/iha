@@ -20,23 +20,9 @@
         Enable individual API permissions here.
         The "device" permission is required for the 'deviceready' event.
     -->
-	<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-	<uses-permission android:name="android.permission.GET_ACCOUNTS" />
-	<uses-permission android:name="android.permission.WAKE_LOCK" />
-	<uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
-	<permission android:name="$PACKAGE_NAME.permission.C2D_MESSAGE" android:protectionLevel="signature" />
-	<uses-permission android:name="$PACKAGE_NAME.permission.C2D_MESSAGE" />
-
+    <feature name="http://api.phonegap.com/1.0/device" />
 	
-	<activity android:name="com.plugin.gcm.PushHandlerActivity"/>
-	<receiver android:name="com.plugin.gcm.CordovaGCMBroadcastReceiver" android:permission="com.google.android.c2dm.permission.SEND" >
-		<intent-filter>
-			<action android:name="com.google.android.c2dm.intent.RECEIVE" />
-			<action android:name="com.google.android.c2dm.intent.REGISTRATION" />
-			<category android:name="$PACKAGE_NAME" />
-		</intent-filter>
-	</receiver>
-	<service android:name="com.plugin.gcm.GCMIntentService" />
+
     <!--
         If you do not want any permissions to be added to your app, add the
         following tag to your config.xml; you will still have the INTERNET
@@ -56,9 +42,7 @@
 	<gap:platform name="android" />
 	<gap:plugin name="de.appplant.cordova.plugin.background-mode" version="0.5.0" />
 	<gap:plugin name="com.phonegap.plugins.pushplugin" version="2.1.1" />
-	<gap:plugin name="org.apache.cordova.device" />
-	<plugin name="Device" value="org.apache.cordova.Device"/>
-
+	<gap:plugin name="org.apache.cordova.device" version="0.2.8" />
 
     <!-- Plugins can also be added here. -->
     <!--
