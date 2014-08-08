@@ -131,6 +131,7 @@ else
 
 function successHandler (result) {
     alert('result = ' + result);
+	 alert("regID = " + e.regid);
 }
 function errorHandler (error) {
     alert('error = ' + error);
