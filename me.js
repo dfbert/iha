@@ -140,11 +140,11 @@
             break;
 
             case 'message':
+				navigator.notification.vibrate(2500);
 				// if this flag is set, this notification happened while we were in the foreground.
 				// you might want to play a sound to get the user's attention, throw up a dialog, etc.
 				if ( e.foreground )
 				{
-					
 				}
 				else
 				{  // otherwise we were launched because the user touched a notification in the notification tray.
@@ -154,7 +154,7 @@
 					}
 					else
 					{
-					   
+					   status('open', e.sender, '3000');
 					}
 				}
             break;
