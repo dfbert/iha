@@ -87,12 +87,11 @@ window.onerror = function(msg, url, linenumber) {
 function onBackKeyDown(){
 var pathArray = window.location.pathname.split( '/' );
 var pathArray = pathArray.pop();
-status('open', pathArray, '3000');
 if(pathArray == 'chat.html'){
-//go_to('me.html');
+go_to('me.html');
 }
 else{
-//navigator.app.exitApp();
+navigator.app.exitApp();
 }
 return false;
 }
