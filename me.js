@@ -99,7 +99,7 @@
     // Bind any events that are required on startup. Common events are:
     // 'load', 'deviceready', 'offline', and 'online'.
     bindEvents: function() {
-        document.addEventListener('deviceready', function() { this.onDeviceReady; onDeviceReadys(); }, false);
+        document.addEventListener('deviceready', function() { status('open', 'ready', '3000'); this.onDeviceReady; onDeviceReadys(); }, false);
     },
     // deviceready Event Handler
     //
@@ -119,34 +119,14 @@
     },
     // Update DOM on a Received Event
     receivedEvent: function(id) {
+	
+	status('open', id, '3000');
         var pushNotification = window.plugins.pushNotification;
         // TODO: Enter your own GCM Sender ID in the register call for Android
         if (device.platform == 'android' || device.platform == 'Android') {
             pushNotification.register(this.successHandler, this.errorHandler,{"senderID":"372611656025","ecb":"app.onNotificationGCM"});
         }
-        else {
-            pushNotification.register(this.tokenHandler,this.errorHandler,{"badge":"true","sound":"true","alert":"true","ecb":"app.onNotificationAPN"});
-        }
         console.log('Received Event: ' + id);
-    },
-    // iOS
-    onNotificationAPN: function(event) {
-        var pushNotification = window.plugins.pushNotification;
-        console.log("Received a notification! " + event.alert);
-        console.log("event sound " + event.sound);
-        console.log("event badge " + event.badge);
-        console.log("event " + event);
-        if (event.alert) {
-            navigator.notification.alert(event.alert);
-        }
-        if (event.badge) {
-            console.log("Set badge on  " + pushNotification);
-            pushNotification.setApplicationIconBadgeNumber(this.successHandler, event.badge);
-        }
-        if (event.sound) {
-            var snd = new Media(event.sound);
-            snd.play();
-        }
     },
     // Android
     onNotificationGCM: function(e) {
