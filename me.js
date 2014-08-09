@@ -140,10 +140,24 @@
             break;
 
             case 'message':
-			status('open', 'ready2', '5000');
-              // this is the actual push notification. its format depends on the data model
-              // of the intermediary push server which must also be reflected in GCMIntentService.java
-              alert('message = '+e.message+' msgcnt = '+e.msgcnt);
+			    case 'message':
+        // if this flag is set, this notification happened while we were in the foreground.
+        // you might want to play a sound to get the user's attention, throw up a dialog, etc.
+        if ( e.foreground )
+        {
+            
+        }
+        else
+        {  // otherwise we were launched because the user touched a notification in the notification tray.
+            if ( e.coldstart )
+            {
+                go_to('chat.html?friendname='+e.sender);
+            }
+            else
+            {
+               
+            }
+        }
             break;
 
             case 'error':
