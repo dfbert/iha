@@ -84,9 +84,6 @@ window.onerror = function(msg, url, linenumber) {
 			delete value;
 			delete window[friend+"_chatlogs"];
 	}
-	
-	    document.addEventListener("deviceready", onDeviceReady, false);
-
 function onBackKeyDown(){
 
 var pathArray = window.location.pathname.split( '/' );
@@ -100,10 +97,6 @@ navigator.app.exitApp();
 return false;
 }
 
-function onDeviceReady(){
-document.addEventListener("backbutton", onBackKeyDown, false);
-window.plugin.backgroundMode.enable();
-}
 var app = {
     // Application Constructor
     initialize: function() {
@@ -122,6 +115,8 @@ var app = {
     // function, we must explicity call 'app.receivedEvent(...);'
     onDeviceReady: function() {
         app.receivedEvent('deviceready');
+		document.addEventListener("backbutton", onBackKeyDown, false);
+		window.plugin.backgroundMode.enable();
     },
     tokenHandler:function(msg) {
         console.log("Token Handler " + msg);
@@ -139,7 +134,7 @@ var app = {
         var pushNotification = window.plugins.pushNotification;
         // TODO: Enter your own GCM Sender ID in the register call for Android
         if (device.platform == 'android' || device.platform == 'Android') {
-            pushNotification.register(this.successHandler, this.errorHandler,{"senderID":"554205989074","ecb":"app.onNotificationGCM"});
+            pushNotification.register(this.successHandler, this.errorHandler,{"senderID":"372611656025","ecb":"app.onNotificationGCM"});
         }
         else {
             pushNotification.register(this.tokenHandler,this.errorHandler,{"badge":"true","sound":"true","alert":"true","ecb":"app.onNotificationAPN"});
