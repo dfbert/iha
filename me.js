@@ -84,7 +84,6 @@
 	
 	function onDeviceReadys(){
 	document.addEventListener("backbutton", onBackKeyDown, false);
-	window.plugin.backgroundMode.enable();
 	fetch(window.__myusername, window.__mypass, 'friends', 'amigos');
 	fetch(window.__myusername, window.__mypass, 'look', 'avatar');
 	}

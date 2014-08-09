@@ -116,7 +116,9 @@
 		}
 		event.preventDefault();
 	});
-	
+	function onDeviceReadys(){
+	document.addEventListener("backbutton", onBackKeyDown, false);
+	}
 	var app = {
     // Application Constructor
     initialize: function() {
