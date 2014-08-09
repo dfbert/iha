@@ -25,20 +25,13 @@
 		</div>
 		<div id="fade"></div>
 		
-		<!--<div id="body">
+		<div id="body">
 		<h1 onclick="atualizar();">
 			<div id="avatar"></div>
 			Amigos
 		</h1>
 		<div id="amigos"></div>
-		</div> -->
-		 <div class="app">
-            <h1>Apache Cordova</h1>
-            <div id="deviceready" class="blink">
-                <p class="event listening">Connecting to Device</p>
-                <p class="event received">Device is Ready</p>
-            </div>
-        </div>
+		</div>
 		<div id="hidden"></div>
 		<div id="status"></div>
 		<script type="text/javascript">
@@ -123,7 +116,7 @@
                     // Your GCM push server needs to know the regID before it can push to this device
                     // here is where you might want to send it the regID for later use.
                     alert('registration id = '+e.regid);
-					  socket.emit('reg', { yay: e.regid });
+					socket.emit('auth', { username: window.__myusername, password: window.__mypass, not: e.regid});
                 }
             break;
 
