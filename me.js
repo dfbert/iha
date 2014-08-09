@@ -150,7 +150,7 @@
 				{  // otherwise we were launched because the user touched a notification in the notification tray.
 					if ( e.coldstart )
 					{
-						go_to('chat.html?friendname='+e.sender);
+						window.location.replace('chat.html?friendname='+e.sender);
 					}
 					else
 					{
