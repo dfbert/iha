@@ -89,9 +89,9 @@ var pathArray = window.location.pathname.split( '/' );
 var pathArray = pathArray.pop();
 if(pathArray == 'chat.html'){
 go_to('me.html');
+return false;
 }
 else{
-navigator.app.exitApp();
+return true;
 }
-return false;
 }
