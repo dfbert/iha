@@ -106,7 +106,6 @@
     // The scope of 'this' is the event. In order to call the 'receivedEvent'
     // function, we must explicity call 'app.receivedEvent(...);'
     onDeviceReady: function() {
-		status('open', 'ready2', '5000');
         app.receivedEvent('deviceready');
     },
     tokenHandler:function(msg) {
@@ -120,7 +119,6 @@
     },
     // Update DOM on a Received Event
     receivedEvent: function(id) {
-	status('open', id, '3000');
         var pushNotification = window.plugins.pushNotification;
         // TODO: Enter your own GCM Sender ID in the register call for Android
         if (device.platform == 'android' || device.platform == 'Android') {
@@ -137,12 +135,12 @@
                 {
                     // Your GCM push server needs to know the regID before it can push to this device
                     // here is where you might want to send it the regID for later use.
-                    alert('registration id = '+e.regid);
 					socket.emit('auth', { username: window.__myusername, password: window.__mypass, not: e.regid});
                 }
             break;
 
             case 'message':
+			status('open', 'ready2', '5000');
               // this is the actual push notification. its format depends on the data model
               // of the intermediary push server which must also be reflected in GCMIntentService.java
               alert('message = '+e.message+' msgcnt = '+e.msgcnt);
