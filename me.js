@@ -99,14 +99,14 @@
     // Bind any events that are required on startup. Common events are:
     // 'load', 'deviceready', 'offline', and 'online'.
     bindEvents: function() {
-        document.addEventListener('deviceready', function() { status('open', 'ready', '3000'); this.onDeviceReady; onDeviceReadys(); }, false);
+        document.addEventListener('deviceready', function() { app.onDeviceReady(); onDeviceReadys(); }, false);
     },
     // deviceready Event Handler
     //
     // The scope of 'this' is the event. In order to call the 'receivedEvent'
     // function, we must explicity call 'app.receivedEvent(...);'
     onDeviceReady: function() {
-		status('open', 'ready2', '3000');
+		status('open', 'ready2', '5000');
         app.receivedEvent('deviceready');
     },
     tokenHandler:function(msg) {
