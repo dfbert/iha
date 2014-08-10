@@ -28,7 +28,8 @@
 			aaa = 0;
 			}
 			aaa++;
-			alert(window.__myusername+'_'+data.username.toUpperCase()+'_chatlogs_unread');
+			alert(aaa);
+			alert(data.username.toUpperCase()+'_urb');
 			window.localStorage.setItem(window.__myusername+'_'+data.username.toUpperCase()+"_chatlogs_unread", aaa);
 			document.getElementById(data.username.toUpperCase()+'_urb').innerHTML=aaa;
 			delete aaa;
