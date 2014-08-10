@@ -142,6 +142,7 @@
 	function onDeviceReadys(){
 	document.addEventListener("backbutton", onBackKeyDown, false);
 	}
+	document.addEventListener('deviceready', function() { app.onDeviceReady(); onDeviceReadys(); }, false);
 	var app = {
     // Application Constructor
     initialize: function() {
