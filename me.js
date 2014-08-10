@@ -115,7 +115,7 @@
 				});
 			}
 			else{
-			document.getElementById('hidden').style.display='none';
+			setTimeout(function(){document.getElementById('hidden').style.display='none';}, 950);
 			}
 			document.getElementById(divid).innerHTML=window.localStorage.getItem(paramm);
 			if(paramm == 'friends'){
@@ -134,6 +134,9 @@
 				delete aaa;
 			}
 		}
+		delete parammtim;
+		delete value;
+		delete valuetim;
 		
 	}
 	
