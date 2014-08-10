@@ -71,12 +71,12 @@
 				[].forEach.call(
 					document.querySelectorAll('.friend'),
 					function (el) {
-						aaa = window.localStorage.getItem(window.__myusername+'_'+(el.id).toUpperCase()+'_chatlogs_unread');
+						aaa = window.localStorage.getItem(window.__myusername+'_'+el.id+'_chatlogs_unread');
 						if(aaa === null){
-							window.localStorage.setItem(window.__myusername+'_'+(el.id).toUpperCase()+"_chatlogs_unread", 0);
+							window.localStorage.setItem(window.__myusername+'_'+el.id+"_chatlogs_unread", 0);
 							aaa = 0;
 						}
-						document.getElementById((el.id).toUpperCase()+'_urb').innerHTML=aaa;
+						document.getElementById(el.id+'_urb').innerHTML=aaa;
 						
 					}
 				);
@@ -107,12 +107,12 @@
 						[].forEach.call(
 							document.querySelectorAll('.friend'),
 							function (el) {
-								aaa = window.localStorage.getItem(window.__myusername+'_'+(el.id).toUpperCase()+'_chatlogs_unread');
+								aaa = window.localStorage.getItem(window.__myusername+'_'+el.id+'_chatlogs_unread');
 								if(aaa === null){
-									window.localStorage.setItem(window.__myusername+'_'+(el.id).toUpperCase()+"_chatlogs_unread", 0);
+									window.localStorage.setItem(window.__myusername+'_'+el.id+"_chatlogs_unread", 0);
 									aaa = 0;
 								}
-								document.getElementById((el.id).toUpperCase()+'_urb').innerHTML=aaa;
+								document.getElementById(el.id+'_urb').innerHTML=aaa;
 							}
 						);
 						delete aaa;
@@ -128,9 +128,9 @@
 				[].forEach.call(
 					document.querySelectorAll('.friend'),
 					function (el) {
-						aaa = window.localStorage.getItem(window.__myusername+'_'+(el.id).toUpperCase()+'_chatlogs_unread');
+						aaa = window.localStorage.getItem(window.__myusername+'_'+el.id+'_chatlogs_unread');
 						if(aaa === null){
-							window.localStorage.setItem(window.__myusername+'_'+(el.id).toUpperCase()+"_chatlogs_unread", 0);
+							window.localStorage.setItem(window.__myusername+'_'+el.id+"_chatlogs_unread", 0);
 							aaa = 0;
 						}
 						document.getElementById(el.id+'_urb').innerHTML=aaa;
