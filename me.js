@@ -61,7 +61,6 @@
 			window.localStorage.setItem(parammtim, Math.round(+new Date()/1000));	
 			document.getElementById(divid).innerHTML=data;
 			document.getElementById('hidden').style.display='none'; //desaciona animação de carregamento
-			if(paramm == 'friend'){
 				[].forEach.call(
 					document.querySelectorAll('.friend'),
 					function (el) {
@@ -73,7 +72,6 @@
 						document.getElementById(el.id+'_urb').innerHTML=aaa; alert(el.id);
 					}
 				);
-			}
 		});
 		}
 		else{
@@ -93,8 +91,6 @@
 					window.localStorage.setItem(parammtim, Math.round(+new Date()/1000));	
 					document.getElementById(divid).innerHTML=data;
 					document.getElementById('hidden').style.display='none'; //desaciona animação de carregamento
-					
-					if(paramm == 'friend'){
 						[].forEach.call(
 							document.querySelectorAll('.friend'),
 							function (el) {
@@ -106,11 +102,9 @@
 								document.getElementById(el.id+'_urb').innerHTML=aaa; alert(el.id);
 							}
 						);
-					}
 				});
 			}
 			document.getElementById(divid).innerHTML=window.localStorage.getItem(paramm);
-			if(paramm == 'friend'){
 				[].forEach.call(
 					document.querySelectorAll('.friend'),
 					function (el) {
@@ -123,7 +117,6 @@
 						delete aa;
 					}
 				);
-			}
 		}
 		
 	}
