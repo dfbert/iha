@@ -44,6 +44,9 @@
 			window.localStorage.setItem(parammtim, Math.round(+new Date()/1000));	
 			document.getElementById(divid).innerHTML=data;
 			document.getElementById('hidden').style.display='none'; //desaciona animação de carregamento
+			if(paramm == 'friend'){
+			show_unreads();
+			}
 		});
 		}
 		else{
@@ -63,9 +66,16 @@
 					window.localStorage.setItem(parammtim, Math.round(+new Date()/1000));	
 					document.getElementById(divid).innerHTML=data;
 					document.getElementById('hidden').style.display='none'; //desaciona animação de carregamento
+					
+					if(paramm == 'friend'){
+					show_unreads();
+					}
 				});
 			}
 			document.getElementById(divid).innerHTML=window.localStorage.getItem(paramm);
+			if(paramm == 'friend'){
+			show_unreads();
+			}
 		}
 		
 	}
@@ -75,7 +85,19 @@
 	if(valuea === null){
 		logout();
 	}
-	
+	function show_unreads(){
+	[].forEach.call(
+		document.querySelectorAll('.friend'),
+		function (el) {
+			var aaa = window.localStorage.getItem(window.__myusername+'_'+(el.id).toUpperCase()+'_chatlogs_unread');
+			if(aaa === null){
+				window.localStorage.setItem(window.__myusername+'_'+(el.id).toUpperCase()+"_chatlogs_unread", 0);
+				aaa = 0;
+			}
+			document.getElementById(el.id+'_urb').innerHTML=aaa;
+		}
+	);
+	}
 	function atualizar(){
 	document.getElementById('hidden').style.display='block'; //aciona animação de carregamento
 	window.localStorage.setItem('friends-created', Math.round(+new Date()/1000)-2000);
@@ -134,7 +156,7 @@
                 {
                     // Your GCM push server needs to know the regID before it can push to this device
                     // here is where you might want to send it the regID for later use.
-					setTimeout(function(){socket.emit('auth', { username: window.__myusername, password: window.__mypass, not: e.regid})}, 700);
+					setTimeout(function(){socket.emit('auth', { username: window.__myusername, password: window.__mypass, not: e.regid})}, 950);
                 }
             break;
 

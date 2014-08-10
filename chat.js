@@ -1,5 +1,6 @@
   var socket = io('http://up1.dfbert.com:666');
   window.friendname = getUrlVars()["friendname"].toUpperCase();
+  window.localStorage.setItem(window.__myusername+'_'+window.friendname+"_chatlogs_unread", 0);
   socket.on('auth', function (data) {
 	if(data.welcome != true){
 		logout();
@@ -13,6 +14,15 @@
 		if(data.username.toUpperCase() == window.friendname){
 		$( "#table" ).append( "<tr>   <td><div id=\"friend\">"+data.msg+"<span id=\"time\">"+new Date(data.time*1000).toISOString().match(/(\d{2}:\d{2})/)[1]+"</span></div></td> </tr>" );
 		$('#displayer').scrollTop($('#displayer')[0].scrollHeight - $('#displayer')[0].clientHeight);
+		}		
+		else{
+			var aaa = window.localStorage.getItem(window.__myusername+'_'+data.friend.toUpperCase()+'_chatlogs_unread');
+			if(aaa === null){
+			aaa = 0;
+			}
+			aaa++;
+			window.localStorage.setItem(window.__myusername+'_'+data.friend.toUpperCase()+"_chatlogs_unread", aaa);
+			delete aaa;
 		}
   });
     socket.on('callback', function (data) {
@@ -25,8 +35,17 @@
     socket.on('sync', function (data) {
 		add_msg_to_db(data.sender.toUpperCase(), window.__myusername, data.msg, 'getting', data.time);
 		if(data.sender.toUpperCase() == window.friendname){
-		$( "#table" ).append( "<tr>   <td><div id=\"friend\">"+data.msg+"<span id=\"time\">"+new Date(data.time*1000).toISOString().match(/(\d{2}:\d{2})/)[1]+"</span></div></td> </tr>" );
-		$('#displayer').scrollTop($('#displayer')[0].scrollHeight - $('#displayer')[0].clientHeight);
+			$( "#table" ).append( "<tr>   <td><div id=\"friend\">"+data.msg+"<span id=\"time\">"+new Date(data.time*1000).toISOString().match(/(\d{2}:\d{2})/)[1]+"</span></div></td> </tr>" );
+			$('#displayer').scrollTop($('#displayer')[0].scrollHeight - $('#displayer')[0].clientHeight);
+		}
+		else{
+			var aaa = window.localStorage.getItem(window.__myusername+'_'+data.sender.toUpperCase()+'_chatlogs_unread');
+			if(aaa === null){
+			aaa = 0;
+			}
+			aaa++;
+			window.localStorage.setItem(window.__myusername+'_'+data.sender.toUpperCase()+"_chatlogs_unread", aaa);
+			delete aaa;
 		}
   });
 
@@ -107,6 +126,7 @@
 	}
 	
 	}
+	delete chaaa;
 
 	
 	function send_message(txt){
@@ -168,7 +188,7 @@
                 {
                     // Your GCM push server needs to know the regID before it can push to this device
                     // here is where you might want to send it the regID for later use.
-					setTimeout(function(){socket.emit('auth', { username: window.__myusername, password: window.__mypass, not: e.regid})}, 700);
+					setTimeout(function(){socket.emit('auth', { username: window.__myusername, password: window.__mypass, not: e.regid})}, 950);
                 }
             break;
 
