@@ -81,7 +81,7 @@
 		}
 		else{
 			if((parseInt(valuetim)-(Math.round(+new Date()/1000)-60)) < 0){
-				$.post("http://www.ihabi.net/IHABI_APP_BACKEND/gets.php", { login_user: user, login_password: pass, parameter: paramm }) //parametros do POST
+				$.get("http://www.ihabi.net/IHABI_APP_BACKEND/gets.php", { login_user: user, login_password: pass, parameter: paramm }) //parametros do POST
 				.done(function(data) 
 				{
 					if (data == "null"){
