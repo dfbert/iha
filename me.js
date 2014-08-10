@@ -23,7 +23,7 @@
   });  
     socket.on('message', function (data) {
 		add_msg_to_db(data.username, data.friend.toUpperCase(), data.msg, 'getting', data.time);
-			var aaa = window.localStorage.getItem(window.__myusername+'_'+data.friend.toUpperCase()+'_chatlogs_unread');
+			var aaa = window.localStorage.getItem(window.__myusername+'_'+data.username.toUpperCase()+'_chatlogs_unread');
 			if(aaa === null){
 			aaa = 0;
 			}
