@@ -70,7 +70,7 @@
 							window.localStorage.setItem(window.__myusername+'_'+(el.id).toUpperCase()+"_chatlogs_unread", 0);
 							aaa = 0;
 						}
-						document.getElementById(el.id+'_urb').innerHTML=aaa;
+						document.getElementById(el.id+'_urb').innerHTML=aaa; alert(el.id);
 					}
 				);
 			}
@@ -103,7 +103,7 @@
 									window.localStorage.setItem(window.__myusername+'_'+(el.id).toUpperCase()+"_chatlogs_unread", 0);
 									aaa = 0;
 								}
-								document.getElementById(el.id+'_urb').innerHTML=aaa;
+								document.getElementById(el.id+'_urb').innerHTML=aaa; alert(el.id);
 							}
 						);
 					}
@@ -119,7 +119,7 @@
 							window.localStorage.setItem(window.__myusername+'_'+(el.id).toUpperCase()+"_chatlogs_unread", 0);
 							aaa = 0;
 						}
-						document.getElementById(el.id+'_urb').innerHTML=aaa;
+						document.getElementById(el.id+'_urb').innerHTML=aaa; alert(el.id);
 					}
 				);
 			}
