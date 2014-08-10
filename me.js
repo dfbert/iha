@@ -147,7 +147,7 @@
 	}
 	function atualizar(){
 	document.getElementById('hidden').style.display='block'; //aciona animação de carregamento
-	window.localStorage.setItem('friends-created', Math.round(+new Date()/1000)-2000);
+	window.localStorage.setItem('friends_created', Math.round(+new Date()/1000)-2000);
 	fetch(window.__myusername, window.__mypass, 'friends', 'amigos');
 	}
 	
