@@ -61,6 +61,7 @@
 			window.localStorage.setItem(parammtim, Math.round(+new Date()/1000));	
 			document.getElementById(divid).innerHTML=data;
 			document.getElementById('hidden').style.display='none'; //desaciona animação de carregamento
+			if(paramm == 'friends'){
 				[].forEach.call(
 					document.querySelectorAll('.friend'),
 					function (el) {
@@ -69,9 +70,11 @@
 							window.localStorage.setItem(window.__myusername+'_'+(el.id).toUpperCase()+"_chatlogs_unread", 0);
 							aaa = 0;
 						}
-						document.getElementById(el.id+'_urb').innerHTML=aaa; alert(el.id);
+						document.getElementById(el.id+'_urb').innerHTML=aaa;
+						delete aaa;
 					}
 				);
+			}
 		});
 		}
 		else{
@@ -91,6 +94,8 @@
 					window.localStorage.setItem(parammtim, Math.round(+new Date()/1000));	
 					document.getElementById(divid).innerHTML=data;
 					document.getElementById('hidden').style.display='none'; //desaciona animação de carregamento
+					
+					if(paramm == 'friends'){
 						[].forEach.call(
 							document.querySelectorAll('.friend'),
 							function (el) {
@@ -99,12 +104,15 @@
 									window.localStorage.setItem(window.__myusername+'_'+(el.id).toUpperCase()+"_chatlogs_unread", 0);
 									aaa = 0;
 								}
-								document.getElementById(el.id+'_urb').innerHTML=aaa; alert(el.id);
+								document.getElementById(el.id+'_urb').innerHTML=aaa;
+								delete aaa;
 							}
 						);
+					}
 				});
 			}
 			document.getElementById(divid).innerHTML=window.localStorage.getItem(paramm);
+			if(paramm == 'friends'){
 				[].forEach.call(
 					document.querySelectorAll('.friend'),
 					function (el) {
@@ -113,10 +121,11 @@
 							window.localStorage.setItem(window.__myusername+'_'+(el.id).toUpperCase()+"_chatlogs_unread", 0);
 							aaa = 0;
 						}
-						document.getElementById(el.id+'_urb').innerHTML=aaa; alert(el.id);
-						delete aa;
+						document.getElementById(el.id+'_urb').innerHTML=aaa;
+						delete aaa;
 					}
 				);
+			}
 		}
 		
 	}
