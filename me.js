@@ -62,7 +62,17 @@
 			document.getElementById(divid).innerHTML=data;
 			document.getElementById('hidden').style.display='none'; //desaciona animação de carregamento
 			if(paramm == 'friend'){
-			show_unreads();
+				[].forEach.call(
+					document.querySelectorAll('.friend'),
+					function (el) {
+						var aaa = window.localStorage.getItem(window.__myusername+'_'+(el.id).toUpperCase()+'_chatlogs_unread');
+						if(aaa === null){
+							window.localStorage.setItem(window.__myusername+'_'+(el.id).toUpperCase()+"_chatlogs_unread", 0);
+							aaa = 0;
+						}
+						document.getElementById(el.id+'_urb').innerHTML=aaa;
+					}
+				);
 			}
 		});
 		}
@@ -85,13 +95,33 @@
 					document.getElementById('hidden').style.display='none'; //desaciona animação de carregamento
 					
 					if(paramm == 'friend'){
-					show_unreads();
+						[].forEach.call(
+							document.querySelectorAll('.friend'),
+							function (el) {
+								var aaa = window.localStorage.getItem(window.__myusername+'_'+(el.id).toUpperCase()+'_chatlogs_unread');
+								if(aaa === null){
+									window.localStorage.setItem(window.__myusername+'_'+(el.id).toUpperCase()+"_chatlogs_unread", 0);
+									aaa = 0;
+								}
+								document.getElementById(el.id+'_urb').innerHTML=aaa;
+							}
+						);
 					}
 				});
 			}
 			document.getElementById(divid).innerHTML=window.localStorage.getItem(paramm);
 			if(paramm == 'friend'){
-			show_unreads();
+				[].forEach.call(
+					document.querySelectorAll('.friend'),
+					function (el) {
+						var aaa = window.localStorage.getItem(window.__myusername+'_'+(el.id).toUpperCase()+'_chatlogs_unread');
+						if(aaa === null){
+							window.localStorage.setItem(window.__myusername+'_'+(el.id).toUpperCase()+"_chatlogs_unread", 0);
+							aaa = 0;
+						}
+						document.getElementById(el.id+'_urb').innerHTML=aaa;
+					}
+				);
 			}
 		}
 		
@@ -101,19 +131,6 @@
 	var valuea = window.localStorage.getItem('auth');
 	if(valuea === null){
 		logout();
-	}
-	function show_unreads(){
-	[].forEach.call(
-		document.querySelectorAll('.friend'),
-		function (el) {
-			var aaa = window.localStorage.getItem(window.__myusername+'_'+(el.id).toUpperCase()+'_chatlogs_unread');
-			if(aaa === null){
-				window.localStorage.setItem(window.__myusername+'_'+(el.id).toUpperCase()+"_chatlogs_unread", 0);
-				aaa = 0;
-			}
-			document.getElementById(el.id+'_urb').innerHTML=aaa;
-		}
-	);
 	}
 	function atualizar(){
 	document.getElementById('hidden').style.display='block'; //aciona animação de carregamento
