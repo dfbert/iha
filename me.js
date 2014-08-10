@@ -114,7 +114,9 @@
 					}
 				});
 			}
-			document.getElementById('hidden').style.display='none'; //desaciona animação de carregamento
+			else{
+			document.getElementById('hidden').style.display='none';
+			}
 			document.getElementById(divid).innerHTML=window.localStorage.getItem(paramm);
 			if(paramm == 'friends'){
 			var aaa;
