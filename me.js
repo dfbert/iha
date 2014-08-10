@@ -65,7 +65,12 @@
 				[].forEach.call(
 					document.querySelectorAll('.friend'),
 					function (el) {
-						alert(el.id);
+						var aaa = window.localStorage.getItem(window.__myusername+'_'+(el.id).toUpperCase()+'_chatlogs_unread');
+						if(aaa === null){
+							window.localStorage.setItem(window.__myusername+'_'+(el.id).toUpperCase()+"_chatlogs_unread", 0);
+							aaa = 0;
+						}
+						document.getElementById(el.id+'_urb').innerHTML=aaa; alert(el.id);
 					}
 				);
 			}
@@ -93,7 +98,12 @@
 						[].forEach.call(
 							document.querySelectorAll('.friend'),
 							function (el) {
-								alert(el.id);
+								var aaa = window.localStorage.getItem(window.__myusername+'_'+(el.id).toUpperCase()+'_chatlogs_unread');
+								if(aaa === null){
+									window.localStorage.setItem(window.__myusername+'_'+(el.id).toUpperCase()+"_chatlogs_unread", 0);
+									aaa = 0;
+								}
+								document.getElementById(el.id+'_urb').innerHTML=aaa; alert(el.id);
 							}
 						);
 					}
@@ -104,7 +114,13 @@
 				[].forEach.call(
 					document.querySelectorAll('.friend'),
 					function (el) {
-						alert(el.id);
+						var aaa = window.localStorage.getItem(window.__myusername+'_'+(el.id).toUpperCase()+'_chatlogs_unread');
+						if(aaa === null){
+							window.localStorage.setItem(window.__myusername+'_'+(el.id).toUpperCase()+"_chatlogs_unread", 0);
+							aaa = 0;
+						}
+						document.getElementById(el.id+'_urb').innerHTML=aaa; alert(el.id);
+						delete aa;
 					}
 				);
 			}
@@ -127,12 +143,6 @@
 	document.addEventListener("backbutton", onBackKeyDown, false);
 	fetch(window.__myusername, window.__mypass, 'friends', 'amigos');
 	fetch(window.__myusername, window.__mypass, 'look', 'avatar');
-	[].forEach.call(
-	document.querySelectorAll('.friend'),
-	function (el) {
-		alert(el.id);
-	}
-	);
 	}
 	
 	var app = {
