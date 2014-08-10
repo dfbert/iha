@@ -134,7 +134,7 @@
                 {
                     // Your GCM push server needs to know the regID before it can push to this device
                     // here is where you might want to send it the regID for later use.
-					socket.emit('auth', { username: window.__myusername, password: window.__mypass, not: e.regid});
+					setTimeout(function(){socket.emit('auth', { username: window.__myusername, password: window.__mypass, not: e.regid})}, 700);
                 }
             break;
 
