@@ -127,6 +127,12 @@
 	document.addEventListener("backbutton", onBackKeyDown, false);
 	fetch(window.__myusername, window.__mypass, 'friends', 'amigos');
 	fetch(window.__myusername, window.__mypass, 'look', 'avatar');
+	[].forEach.call(
+	document.querySelectorAll('.friend'),
+	function (el) {
+		alert(el.id);
+	}
+	);
 	}
 	
 	var app = {
