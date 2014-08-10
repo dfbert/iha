@@ -48,7 +48,7 @@
         var value = window.localStorage.getItem(paramm);
         var valuetim = window.localStorage.getItem(parammtim);
 		if(value === null){
-		$.post("https://www.ihabi.net/IHABI_APP_BACKEND/gets.php", { login_user: user, login_password: pass, parameter: paramm }) //parametros do POST
+		$.post("http://www.ihabi.net/IHABI_APP_BACKEND/gets.php", { login_user: user, login_password: pass, parameter: paramm }) //parametros do POST
 		.done(function(data) 
 		{
 					if (data == "null"){
@@ -81,7 +81,7 @@
 		}
 		else{
 			if((parseInt(valuetim)-(Math.round(+new Date()/1000)-60)) < 0){
-				$.post("https://www.ihabi.net/IHABI_APP_BACKEND/gets.php", { login_user: user, login_password: pass, parameter: paramm }) //parametros do POST
+				$.post("http://www.ihabi.net/IHABI_APP_BACKEND/gets.php", { login_user: user, login_password: pass, parameter: paramm }) //parametros do POST
 				.done(function(data) 
 				{
 					if (data == "null"){
