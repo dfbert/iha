@@ -36,7 +36,7 @@
 					<input name="login-password" placeholder="Senha" id="login_senha" type="password" required=""></input>
 					<div onclick="valida_login();" ontouchstart="return true;" class="cl" id="sub"></div>
 					</form>
-							<button onclick="login()">Login</button>
+		<button onclick="login()">Login</button>
 		<button onclick="me()">Me</button>
 		<!--<button onclick="getSession()">Get session</button>-->
 		<button onclick="getLoginStatus()">Get login</button>
@@ -79,7 +79,8 @@
                 FB.getLoginStatus(function(response) {
                                   if (response.status == 'connected') {
                                   alert('logged in');
-                                  } else {
+                                  } 
+								  else {
                                   alert('not logged in');
                                   }
                                   });
