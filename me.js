@@ -28,9 +28,9 @@
 			aaa = 0;
 			}
 			aaa++;
-			alert(window.__myusername+'_'+data.friend.toUpperCase()+'_chatlogs_unread');
-			window.localStorage.setItem(window.__myusername+'_'+data.friend.toUpperCase()+"_chatlogs_unread", aaa);
-			document.getElementById(data.friend.toUpperCase()+'_urb').innerHTML=aaa;
+			alert(window.__myusername+'_'+data.username.toUpperCase()+'_chatlogs_unread');
+			window.localStorage.setItem(window.__myusername+'_'+data.username.toUpperCase()+"_chatlogs_unread", aaa);
+			document.getElementById(data.username.toUpperCase()+'_urb').innerHTML=aaa;
 			delete aaa;
   });
     socket.on('callback', function (data) {
