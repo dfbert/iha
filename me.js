@@ -30,20 +30,8 @@
 			}
 			aaa++;
 			window.localStorage.setItem(window.__myusername+'_'+data.friend.toUpperCase()+"_chatlogs_unread", aaa);
+			document.getElementById(data.friend.toUpperCase()+'_urb').innerHTML=aaa;
 			delete aaa;
-								var aaa;
-						[].forEach.call(
-							document.querySelectorAll('.friend'),
-							function (el) {
-								aaa = window.localStorage.getItem(window.__myusername+'_'+(el.id).toUpperCase()+'_chatlogs_unread');
-								if(aaa === null){
-									window.localStorage.setItem(window.__myusername+'_'+(el.id).toUpperCase()+"_chatlogs_unread", 0);
-									aaa = 0;
-								}
-								document.getElementById(el.id+'_urb').innerHTML=aaa;
-							}
-						);
-						delete aaa;
   });
     socket.on('callback', function (data) {
 		add_msg_to_db(data.username, data.friend.toUpperCase(), data.msg, 'sending', data.time);
@@ -56,20 +44,8 @@
 			}
 			aaa++;
 			window.localStorage.setItem(window.__myusername+'_'+data.sender.toUpperCase()+"_chatlogs_unread", aaa);
+			document.getElementById(data.sender.toUpperCase()+'_urb').innerHTML=aaa;
 			delete aaa;
-								var aaa;
-						[].forEach.call(
-							document.querySelectorAll('.friend'),
-							function (el) {
-								aaa = window.localStorage.getItem(window.__myusername+'_'+(el.id).toUpperCase()+'_chatlogs_unread');
-								if(aaa === null){
-									window.localStorage.setItem(window.__myusername+'_'+(el.id).toUpperCase()+"_chatlogs_unread", 0);
-									aaa = 0;
-								}
-								document.getElementById(el.id+'_urb').innerHTML=aaa;
-							}
-						);
-						delete aaa;
   });
 		function fetch(user, pass, paramm, divid)
 		{	
@@ -100,7 +76,7 @@
 							window.localStorage.setItem(window.__myusername+'_'+(el.id).toUpperCase()+"_chatlogs_unread", 0);
 							aaa = 0;
 						}
-						document.getElementById(el.id+'_urb').innerHTML=aaa;
+						document.getElementById((el.id).toUpperCase()+'_urb').innerHTML=aaa;
 						
 					}
 				);
@@ -136,7 +112,7 @@
 									window.localStorage.setItem(window.__myusername+'_'+(el.id).toUpperCase()+"_chatlogs_unread", 0);
 									aaa = 0;
 								}
-								document.getElementById(el.id+'_urb').innerHTML=aaa;
+								document.getElementById((el.id).toUpperCase()+'_urb').innerHTML=aaa;
 							}
 						);
 						delete aaa;
