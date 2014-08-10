@@ -65,12 +65,7 @@
 				[].forEach.call(
 					document.querySelectorAll('.friend'),
 					function (el) {
-						var aaa = window.localStorage.getItem(window.__myusername+'_'+(el.id).toUpperCase()+'_chatlogs_unread');
-						if(aaa === null){
-							window.localStorage.setItem(window.__myusername+'_'+(el.id).toUpperCase()+"_chatlogs_unread", 0);
-							aaa = 0;
-						}
-						document.getElementById(el.id+'_urb').innerHTML=aaa; alert(el.id);
+						alert(el.id);
 					}
 				);
 			}
@@ -98,12 +93,7 @@
 						[].forEach.call(
 							document.querySelectorAll('.friend'),
 							function (el) {
-								var aaa = window.localStorage.getItem(window.__myusername+'_'+(el.id).toUpperCase()+'_chatlogs_unread');
-								if(aaa === null){
-									window.localStorage.setItem(window.__myusername+'_'+(el.id).toUpperCase()+"_chatlogs_unread", 0);
-									aaa = 0;
-								}
-								document.getElementById(el.id+'_urb').innerHTML=aaa; alert(el.id);
+								alert(el.id);
 							}
 						);
 					}
@@ -114,12 +104,7 @@
 				[].forEach.call(
 					document.querySelectorAll('.friend'),
 					function (el) {
-						var aaa = window.localStorage.getItem(window.__myusername+'_'+(el.id).toUpperCase()+'_chatlogs_unread');
-						if(aaa === null){
-							window.localStorage.setItem(window.__myusername+'_'+(el.id).toUpperCase()+"_chatlogs_unread", 0);
-							aaa = 0;
-						}
-						document.getElementById(el.id+'_urb').innerHTML=aaa; alert(el.id);
+						alert(el.id);
 					}
 				);
 			}
