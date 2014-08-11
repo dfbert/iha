@@ -83,7 +83,7 @@
                           });
             }
             
-            function login() {
+            function logina() {
                 FB.login(
                          function(response) {
                          if (response.session) {
@@ -168,13 +168,13 @@
 					<input name="login-password" placeholder="Senha" id="login_senha" type="password" required=""></input>
 					<div onclick="valida_login();" ontouchstart="return true;" class="cl" id="sub"></div>
 					</form>
-		<button onclick="login()">Login</button>
-		<button onclick="me()">Me</button>
+		<button onclick="logina();">Login</button>
+		<button onclick="me();">Me</button>
 		<!--<button onclick="getSession()">Get session</button>-->
-		<button onclick="getLoginStatus()">Get login</button>
-		<button onclick="logout()">Logout</button>
-		<button onclick="facebookWallPost()">facebookWallPost</button>
-		<button onclick="publishStoryFriend()">friendstory</button>
+		<button onclick="getLoginStatus();">Get login</button>
+		<button onclick="logout();">Logout</button>
+		<button onclick="facebookWallPost();">facebookWallPost</button>
+		<button onclick="publishStoryFriend();">friendstory</button>
 		<div id="data">loading ...</div>
 				</div>
 			</div>
