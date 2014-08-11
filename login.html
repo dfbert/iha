@@ -11,44 +11,6 @@
 		<link href='index.css' rel='stylesheet' type='text/css'>
 		<meta charset="UTF-8">
 		<meta name="viewport" content="user-scalable=no" />
-	</head>
-	<body id="body">
-	 <div id="fb-root"></div>
-		<div id="header">
-		<div id="menu" class="cl" onclick="menu();" ontouchstart="return true;">
-		</div>
-		<div id="logo">iHabi Messenger</div>
-		</div>
-		<div id="menu-bar">
-		<div id="item"></div>
-		<div id="item"></div>
-		<div id="item"></div>
-		<div id="item" onclick="logout();">Sair</div>
-		</div>
-		<div id="fade"></div>
-		
-		<div class="content" id="login" style="display:block">
-			<div id="make" class="cl2">Fazer login</div>
-			<div id="space">
-				<div id="sp-login">
-					<form name="login" action="" onsubmit="return false;">
-					<input name="login-user" type="text" placeholder="Nome de usuário ou e-mail" id="login" required=""></input>
-					<input name="login-password" placeholder="Senha" id="login_senha" type="password" required=""></input>
-					<div onclick="valida_login();" ontouchstart="return true;" class="cl" id="sub"></div>
-					</form>
-		<button onclick="login()">Login</button>
-		<button onclick="me()">Me</button>
-		<!--<button onclick="getSession()">Get session</button>-->
-		<button onclick="getLoginStatus()">Get login</button>
-		<button onclick="logout()">Logout</button>
-		<button onclick="facebookWallPost()">facebookWallPost</button>
-		<button onclick="publishStoryFriend()">friendstory</button>
-		<div id="data">loading ...</div>
-				</div>
-			</div>
-		</div>
-		<div id="hidden"></div>
-		<div id="status"></div>
 		<script>
              <!-- These are the notifications that are displayed to the user through pop-ups if the above JS files does not exist in the same directory-->
             if ((typeof cordova == 'undefined') && (typeof Cordova == 'undefined')) alert('Cordova variable does not exist. Check that you have included cordova.js correctly');
@@ -181,5 +143,43 @@
                                       }
                                       }, false);
             </script>
+	</head>
+	<body id="body">
+	 <div id="fb-root"></div>
+		<div id="header">
+		<div id="menu" class="cl" onclick="menu();" ontouchstart="return true;">
+		</div>
+		<div id="logo">iHabi Messenger</div>
+		</div>
+		<div id="menu-bar">
+		<div id="item"></div>
+		<div id="item"></div>
+		<div id="item"></div>
+		<div id="item" onclick="logout();">Sair</div>
+		</div>
+		<div id="fade"></div>
+		
+		<div class="content" id="login" style="display:block">
+			<div id="make" class="cl2">Fazer login</div>
+			<div id="space">
+				<div id="sp-login">
+					<form name="login" action="" onsubmit="return false;">
+					<input name="login-user" type="text" placeholder="Nome de usuário ou e-mail" id="login" required=""></input>
+					<input name="login-password" placeholder="Senha" id="login_senha" type="password" required=""></input>
+					<div onclick="valida_login();" ontouchstart="return true;" class="cl" id="sub"></div>
+					</form>
+		<button onclick="login()">Login</button>
+		<button onclick="me()">Me</button>
+		<!--<button onclick="getSession()">Get session</button>-->
+		<button onclick="getLoginStatus()">Get login</button>
+		<button onclick="logout()">Logout</button>
+		<button onclick="facebookWallPost()">facebookWallPost</button>
+		<button onclick="publishStoryFriend()">friendstory</button>
+		<div id="data">loading ...</div>
+				</div>
+			</div>
+		</div>
+		<div id="hidden"></div>
+		<div id="status"></div>
 	</body>
 </html>
