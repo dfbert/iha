@@ -57,7 +57,8 @@
                          } else {
                          alert('not logged in');
                          }
-                         }
+                         },
+                         { scope: "email" }
                          );
             }
             function me() {
@@ -70,7 +71,6 @@
                                       try {
                                       FB.init({ appId: "193453177489005", nativeInterface: CDV.FB, useCachedDialogs: false });
                                       } catch (e) {
-                                      alert(e);
                                       }
                                       }, false);
             </script>
@@ -101,7 +101,7 @@
 					
 					</form>
 		<br /><button onclick="logina();">Login</button><br /><br />
-		<button onclick="me();">Login</button><br /><br />
+		<button onclick="me();">ID</button><br /><br />
 				</div>
 			</div>
 		</div>
