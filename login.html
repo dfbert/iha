@@ -69,9 +69,7 @@
             
             document.addEventListener('deviceready', function() {
                                       try {
-                                      alert('Device is ready! Make sure you set your app_id below this alert.');
                                       FB.init({ appId: "193453177489005", nativeInterface: CDV.FB, useCachedDialogs: false });
-                                      document.getElementById('data').innerHTML = "";
                                       } catch (e) {
                                       alert(e);
                                       }
@@ -103,8 +101,8 @@
 					<div onclick="valida_login();" ontouchstart="return true;" class="cl" id="sub"></div>
 					
 					</form>
-		<button onclick="logina();">Login</button><br />
-		<button onclick="me();">Login</button><br />
+		<br /><button onclick="logina();">Login</button><br /><br />
+		<button onclick="me();">Login</button><br /><br />
 				</div>
 			</div>
 		</div>
