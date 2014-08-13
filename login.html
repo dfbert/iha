@@ -62,8 +62,7 @@
             }
             function me() {
                 FB.api('/me', { fields: 'id' },  function(response) {
-					   fdata=response.data;
-					   alert(fdata.id);
+					   alert(response.data.id);
                        });
             }
             
