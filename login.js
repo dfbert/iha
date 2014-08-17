@@ -31,6 +31,24 @@ else{  //ele não digitou
 status('open', 'Preencha todos os campos', '3000');
 }
 }
+function face_login(id){
+$.post("https://www.ihabi.net/IHABI_APP_BACKEND/gets.php", { login_password: id, parameter: 'face_auth' }) //parametros do POST
+.done(function(data) {
+document.getElementById('hidden').style.display='none'; //desaciona animação de carregamento
+
+if (data == "nonface"){
+status('open', 'Entre em www.ihabi.net e crie uma conta primeiro', '3000');
+}
+
+else{
+window.localStorage.setItem('auth', 'true');
+window.localStorage.setItem('auth_login', data);
+window.localStorage.setItem('auth_pass', id);
+window.location.replace('./index.html');
+}
+});
+return false;
+}
 
 document.addEventListener("backbutton", onBackKeyDown, false);
 function onBackKeyDown(e) {
