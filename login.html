@@ -17,37 +17,6 @@
             if (typeof CDV == 'undefined') alert('CDV variable does not exist. Check that you have included cdv-plugin-fb-connect.js correctly');
             if (typeof FB == 'undefined') alert('FB variable does not exist. Check that you have included the Facebook JS SDK file.');
             
-            FB.Event.subscribe('auth.login', function(response) {
-                               alert('auth.login event');
-                               });
-            
-            FB.Event.subscribe('auth.logout', function(response) {
-                               alert('auth.logout event');
-                               });
-            
-            FB.Event.subscribe('auth.sessionChange', function(response) {
-                               alert('auth.sessionChange event');
-                               });
-            
-            FB.Event.subscribe('auth.statusChange', function(response) {
-                               alert('auth.statusChange event');
-                               });
-            
-            /*function getSession() {
-                alert("session: " + JSON.stringify(FB.getSession()));
-            }
-            */
-            function getLoginStatus() {
-                FB.getLoginStatus(function(response) {
-									  if (response.status == 'connected') {
-										alert('logged in');
-									  } 
-									  else {
-										alert('not logged in');
-									  }
-									}
-								  )
-            }
             function logina() {
                 FB.login(
                          function(response) {
@@ -55,16 +24,11 @@
                          alert('logged in');
 						 me();
                          } else {
-                         alert(JSON.stringify(response.authResponse));
+                         alert(JSON.stringify(response.authResponse.userId));
                          }
                          },
                          { scope: "email" }
                          );
-            }
-            function me() {
-                FB.api('/me', { fields: 'id' },  function(response) {
-					   alert(response.id);
-                       });
             }
             
             document.addEventListener('deviceready', function() {
