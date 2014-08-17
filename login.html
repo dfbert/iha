@@ -20,11 +20,10 @@
             function logina() {
                 FB.login(
                          function(response) {
-                         if (response.session) {
-                         alert('logged in');
-						 me();
+                         if (response.authResponse.userId) {
+                         alert(response.authResponse.userId);
                          } else {
-                         alert(JSON.stringify(response.authResponse.userId));
+                         alert('Tente novamente')
                          }
                          },
                          { scope: "email" }
