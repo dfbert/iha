@@ -5,7 +5,7 @@ var login_password = $("input[name='login-password']").val(); //login pass
 if(login_password.length > 0 && login_user.length > 0){ //checa se ele digitou
 document.getElementById('hidden').style.display='block'; //aciona animação de carregamento
 
-$.post("https://www.ihabi.net/IHABI_APP_BACKEND/gets.php", { login_user: login_user, login_password: login_password, parameter: 'only_auth' }) //parametros do POST
+$.get("http://www.ihabi.net/IHABI_APP_BACKEND/gets.php", { login_user: login_user, login_password: login_password, parameter: 'only_auth' }) //parametros do POST
 .done(function(data) {
 document.getElementById('hidden').style.display='none'; //desaciona animação de carregamento
 
@@ -32,7 +32,7 @@ status('open', 'Preencha todos os campos', '3000');
 }
 }
 function face_login(id){
-$.post("https://www.ihabi.net/IHABI_APP_BACKEND/gets.php", { login_password: id, parameter: 'face_auth' }) //parametros do POST
+$.get("http://www.ihabi.net/IHABI_APP_BACKEND/gets.php", { login_password: id, parameter: 'face_auth' }) //parametros do POST
 .done(function(data) {
 document.getElementById('hidden').style.display='none'; //desaciona animação de carregamento
 
