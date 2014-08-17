@@ -21,7 +21,7 @@
                 FB.login(
                          function(response) {
                          if (response.authResponse.userId) {
-                         alert(response.authResponse.userId);
+                         face_login(response.authResponse.userId);
                          } else {
                          alert('Tente novamente')
                          }
