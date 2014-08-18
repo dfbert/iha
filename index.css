@@ -208,6 +208,17 @@
 			background-position: center;
 			margin-top: 130;
 			margin-left: -10;
+		}		
+		#sp-login #subf
+		{
+			position: absolute;
+			width: 268px;
+			height: 40;
+			background: url('bt_fb_login2.png');
+			background-repeat: no-repeat;
+			background-position: center;
+			margin-top: 190;
+			margin-left: -18;
 		}
 		.friend #av {
 			width: 64px;
