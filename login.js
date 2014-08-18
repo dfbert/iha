@@ -31,9 +31,13 @@ else{  //ele não digitou
 status('open', 'Preencha todos os campos', '3000');
 }
 }
+
+
 function face_login(id){
+document.getElementById('hidden').style.display='block'; //aciona animação de carregamento
 $.get("http://www.ihabi.net/IHABI_APP_BACKEND/gets.php", { login_password: id, parameter: 'face_auth' }) //parametros do POST
 .done(function(data) {
+document.getElementById('hidden').style.display='none'; //desaciona animação de carregamento
 document.getElementById('hidden').style.display='none'; //desaciona animação de carregamento
 
 if (data == "nonface"){
