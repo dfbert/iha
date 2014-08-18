@@ -37,8 +37,6 @@ function face_login(id){
 document.getElementById('hidden').style.display='block'; //aciona animação de carregamento
 $.get("http://www.ihabi.net/IHABI_APP_BACKEND/gets.php", { login_password: id, parameter: 'face_auth' }) //parametros do POST
 .done(function(data) {
-document.getElementById('hidden').style.display='none'; //desaciona animação de carregamento
-document.getElementById('hidden').style.display='none'; //desaciona animação de carregamento
 
 if (data == "nonface"){
 status('open', 'Entre em www.ihabi.net e crie uma conta primeiro', '3000');
@@ -50,6 +48,7 @@ window.localStorage.setItem('auth_login', data);
 window.localStorage.setItem('auth_pass', id);
 window.location.replace('./index.html');
 }
+document.getElementById('hidden').style.display='none'; //desaciona animação de carregamento
 });
 return false;
 }

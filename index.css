@@ -213,12 +213,12 @@
 		{
 			position: absolute;
 			width: 268px;
-			height: 40;
+			height: 67px;
 			background: url('bt_fb_login2.png');
 			background-repeat: no-repeat;
 			background-position: center;
-			margin-top: 190;
-			margin-left: -18;
+			margin-top: 2200;
+			margin-left: -14;
 		}
 		.friend #av {
 			width: 64px;
