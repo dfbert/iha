@@ -65,6 +65,9 @@ var socket = io('http://up1.dfbert.com:666', {transports: ['websocket']});
 				delete aaa;
 			}
 		});
+		.fail(function() {
+		status('open', 'Não foi possível se conectar', '3000');
+		});
 		}
 		else{
 			if((parseInt(valuetim)-(Math.round(+new Date()/1000)-60)) < 0){
@@ -99,6 +102,9 @@ var socket = io('http://up1.dfbert.com:666', {transports: ['websocket']});
 						);
 						delete aaa;
 					}
+				});
+				.fail(function() {
+				status('open', 'Não foi possível se conectar', '3000');
 				});
 			}
 			else{

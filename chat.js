@@ -6,6 +6,7 @@
 		logout();
 	}
 	else{
+	clearTimeout(myVar);
 	$("input[type=submit]").removeAttr("disabled");
 	}
   });  
@@ -68,6 +69,9 @@
 			window.localStorage.setItem(parammtim, Math.round(+new Date()/1000));	
 			document.getElementById(divid).innerHTML=data;
 		});
+		.fail(function() {
+		status('open', 'Não foi possível se conectar', '3000');
+		});
 		}
 		else{
 			if((parseInt(valuetim)-(Math.round(+new Date()/1000)-60)) < 0){
@@ -85,6 +89,10 @@
 					window.localStorage.setItem(friend+'_'+paramm, data);					
 					window.localStorage.setItem(parammtim, Math.round(+new Date()/1000));	
 					document.getElementById(divid).innerHTML=data;
+				});
+				
+				.fail(function() {
+				status('open', 'Não foi possível se conectar', '3000');
 				});
 			}
 			document.getElementById(divid).innerHTML=window.localStorage.getItem(friend+'_'+paramm);
@@ -141,6 +149,7 @@
 	});
 	function onDeviceReadys(){
 	document.addEventListener("backbutton", onBackKeyDown, false);
+	myVar = setTimeout(function(){status('open', 'Não foi possível se conectar', '3000')}, 10000);
 	}
 	var app = {
     // Application Constructor

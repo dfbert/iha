@@ -24,6 +24,10 @@ window.localStorage.setItem('auth_pass', login_password);
 window.location.replace('./index.html');
 }
 });
+
+.fail(function() {
+status('open', 'Não foi possível se conectar', '3000');
+});
 return false;
 }
 
@@ -49,6 +53,9 @@ window.localStorage.setItem('auth_pass', id);
 window.location.replace('./index.html');
 }
 document.getElementById('hidden').style.display='none'; //desaciona animação de carregamento
+});
+.fail(function() {
+status('open', 'Não foi possível se conectar', '3000');
 });
 return false;
 }
