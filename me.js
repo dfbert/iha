@@ -1,5 +1,6 @@
 var socket = io('http://up1.dfbert.com:666', {transports: ['websocket']});
   socket.on('auth', function (data) {
+  clearTimeout(myVar);
 	if(data.welcome != true){
 		logout();
 	}
@@ -148,6 +149,7 @@ var socket = io('http://up1.dfbert.com:666', {transports: ['websocket']});
 	document.addEventListener("backbutton", onBackKeyDown, false);
 	fetch(window.__myusername, window.__mypass, 'friends', 'amigos');
 	fetch(window.__myusername, window.__mypass, 'look', 'avatar');
+	myVar = setTimeout(function(){status('open', 'Não foi possível se conectar', '3000')}, 10000);
 	}
 	
 	var app = {
