@@ -1,9 +1,3 @@
-
-
-window.onerror = function(msg, url, linenumber) {
-    alert('Error message: '+msg+'\nURL: '+url+'\nLine Number: '+linenumber);
-    return true;
-}
 	window.__myusername = window.localStorage.getItem('auth_login');
 	window.__mypass = window.localStorage.getItem('auth_pass');
 	
