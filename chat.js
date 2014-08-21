@@ -68,7 +68,7 @@
 			window.localStorage.setItem(friend+'_'+paramm, data);					
 			window.localStorage.setItem(parammtim, Math.round(+new Date()/1000));	
 			document.getElementById(divid).innerHTML=data;
-		});
+		})
 		.fail(function() {
 		status('open', 'Não foi possível se conectar', '3000');
 		});
@@ -89,8 +89,7 @@
 					window.localStorage.setItem(friend+'_'+paramm, data);					
 					window.localStorage.setItem(parammtim, Math.round(+new Date()/1000));	
 					document.getElementById(divid).innerHTML=data;
-				});
-				
+				})
 				.fail(function() {
 				status('open', 'Não foi possível se conectar', '3000');
 				});
