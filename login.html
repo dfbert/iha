@@ -7,11 +7,10 @@
 		<script src="facebook-js-sdk.js"></script>
 		<script src="jquery.jsonp-2.1.4.min.js"></script>
 		<script src="./includes/basics.js" type="text/javascript"></script>
-		<script src="login.js" type="text/javascript"></script>
 		<link href='index.css' rel='stylesheet' type='text/css'>
 		<meta charset="UTF-8">
 		<meta name="viewport" content="user-scalable=no" />
-		<script>
+		<script type="text/javascript">
              <!-- These are the notifications that are displayed to the user through pop-ups if the above JS files does not exist in the same directory-->
             if ((typeof cordova == 'undefined') && (typeof Cordova == 'undefined')) alert('Cordova variable does not exist. Check that you have included cordova.js correctly');
             if (typeof CDV == 'undefined') alert('CDV variable does not exist. Check that you have included cdv-plugin-fb-connect.js correctly');
@@ -79,8 +78,6 @@
 		});
 		return false;
 		}
-		
-		document.addEventListener("backbutton", onBackKeyDown, false);
 		function onBackKeyDown(e) {
 		  e.preventDefault();
 		}
@@ -88,7 +85,7 @@
             
             
             
-            function logina() {
+        function logina() {
                 FB.login(
                          function(response) {
                          if (response.authResponse.userId) {
@@ -99,9 +96,10 @@
                          },
                          { scope: "email" }
                          );
-            }
+        }
             
             document.addEventListener('deviceready', function() {
+									  document.addEventListener("backbutton", onBackKeyDown, false);
                                       try {
                                       FB.init({ appId: "193453177489005", nativeInterface: CDV.FB, useCachedDialogs: false });
                                       } catch (e) {
