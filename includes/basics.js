@@ -1,5 +1,3 @@
-
-
 	window.__myusername = window.localStorage.getItem('auth_login');
 	window.__mypass = window.localStorage.getItem('auth_pass');
 	
