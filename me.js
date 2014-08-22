@@ -67,6 +67,7 @@ var socket = io('http://up1.dfbert.com:666', {transports: ['websocket']});
 			}
 		})
 		.fail(function() {
+		document.getElementById('hidden').style.display='none'; //desaciona animação de carregamento
 		status('open', 'Não foi possível se conectar', '3000');
 		});
 		}
@@ -105,6 +106,7 @@ var socket = io('http://up1.dfbert.com:666', {transports: ['websocket']});
 					}
 				})
 				.fail(function() {
+				document.getElementById('hidden').style.display='none'; //desaciona animação de carregamento
 				status('open', 'Não foi possível se conectar', '3000');
 				});
 			}

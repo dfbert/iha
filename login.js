@@ -32,6 +32,7 @@
 		})
 		
 		.fail(function() {
+		document.getElementById('hidden').style.display='none'; //desaciona animação de carregamento
 		status('open', 'Não foi possível se conectar', '3000');
 		});
 		return false;
@@ -61,6 +62,7 @@
 		document.getElementById('hidden').style.display='none'; //desaciona animação de carregamento
 		})
 		.fail(function() {
+		document.getElementById('hidden').style.display='none'; //desaciona animação de carregamento
 		status('open', 'Não foi possível se conectar', '3000');
 		});
 		return false;
