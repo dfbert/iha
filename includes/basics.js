@@ -1,14 +1,4 @@
-$(window).on("error", function(evt) {
 
-    console.log("jQuery error event:", evt);
-    var e = evt.originalEvent; // get the javascript event
-    console.log("original event:", e);
-    if (e.message) { 
-        alert("Error:\n\t" + e.message + "\nLine:\n\t" + e.lineno + "\nFile:\n\t" + e.filename);
-    } else {
-        alert("Error:\n\t" + e.type + "\nElement:\n\t" + (e.srcElement || e.target));
-    }
-});
 
 	window.__myusername = window.localStorage.getItem('auth_login');
 	window.__mypass = window.localStorage.getItem('auth_pass');
