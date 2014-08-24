@@ -1,4 +1,4 @@
-var socket = io('http://up1.dfbert.com:666', {transports: ['websocket']});
+var socket = io(window.__serverip, {transports: ['websocket']});
   socket.on('auth', function (data) {
   clearTimeout(myVar);
 	if(data.welcome != true){

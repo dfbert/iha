@@ -1,6 +1,10 @@
 	window.__myusername = window.localStorage.getItem('auth_login');
 	window.__mypass = window.localStorage.getItem('auth_pass');
-	
+	$.get("http://www.ihabi.net/IHABI_APP_BACKEND/ip.txt") //parametros do POST
+	.done(function(data) {
+	window.localStorage.setItem('serverip', data);
+	});
+	window.__serverip = window.localStorage.getItem('serverip');
 	function status(value, msg, time){  //função do fade-popup
 	if(value == 'open'){
 	document.getElementById('status').style.width='280';
