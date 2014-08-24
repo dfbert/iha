@@ -1,4 +1,4 @@
-  var socket = io(window.__serverip);
+  var socket = io('http://'+window.__serverip);
   window.friendname = getUrlVars()["friendname"].toUpperCase();
   window.localStorage.setItem(window.__myusername+'_'+window.friendname+"_chatlogs_unread", 0);
   socket.on('auth', function (data) {

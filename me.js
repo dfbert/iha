@@ -1,4 +1,4 @@
-var socket = io(window.__serverip, {transports: ['websocket']});
+var socket = io('http://'+window.__serverip, {transports: ['websocket']});
   socket.on('auth', function (data) {
   clearTimeout(myVar);
 	if(data.welcome != true){

@@ -1,11 +1,7 @@
-             <!-- These are the notifications that are displayed to the user through pop-ups if the above JS files does not exist in the same directory-->
-            if ((typeof cordova == 'undefined') && (typeof Cordova == 'undefined')) alert('Cordova variable does not exist. Check that you have included cordova.js correctly');
-            if (typeof CDV == 'undefined') alert('CDV variable does not exist. Check that you have included cdv-plugin-fb-connect.js correctly');
-            if (typeof FB == 'undefined') alert('FB variable does not exist. Check that you have included the Facebook JS SDK file.');
-			
-        $.get("http://www.ihabi.net/IHABI_APP_BACKEND/ip.txt") //parametros do POST
-		.done(function(data) {
-		window.localStorage.setItem('serverip', data);
+		$.get("http://www.ihabi.net/IHABI_APP_BACKEND/ip.txt") //parametros do POST
+		.done(function(ip) {
+		window.localStorage.setItem('serverip', ip);
+		window.__serverip = ip;
 		});
 		            
 		            
