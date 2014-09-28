@@ -10,10 +10,128 @@
 		<link href='index.css' rel='stylesheet' type='text/css'>
 		<meta charset="UTF-8">
 		<meta name="viewport" content="user-scalable=no" />
+				<style>
+#boxt {
+position: fixed;
+bottom: 0px;
+width: 100%;
+left: 0px;
+height: 75px;
+background-color: rgb(197, 197, 197);
+z-index: 99999999999;
+}
+		#myavtr div {
+background-position: -10px -14px !important;
+width: 50px;
+height: 75px;
+		}
+#amigos {
+width: 100%;
+height: 100%;
+top: 55px;
+overflow-x: hidden;
+overflow-y: auto;
+}
+#table tr{
+width:100%;
+}
+#table td
+{
+padding: 5px 40px !important;
+}
+#table td div{
+border: 1px solid rgb(63, 63, 63);
+border-radius: 5px;
+padding: 10px 15px;
+color: black;
+font-family: Helvetica, Arial, 'lucida grande',tahoma,verdana,arial,sans-serif;
+font-size: 12px;
+padding-bottom: 32px;
+}
+#table td #me{
+background: rgb(220, 240, 215);
+}
+#table td #friend{
+background: white;
+}
+#time {
+color: rgb(163, 163, 163);
+float: right;
+right: 55px;
+margin-top: 18px;
+}
+		div#body {
+			background: none;
+		}
+		#friendname{
+		background: rgb(58, 58, 58);
+width: 100%;
+padding: 9px 9px 9px 0px;
+font-family: 'Ubuntu', sans-serif;
+font-weight: bold;
+font-variant: small-caps;
+text-align: left;
+height: 35px;
+margin: 0px;
+overflow: hidden;
+}
+#former{
+margin: 0px;
+}
+
+#ohshit tr{
+width:100%;
+}
+#ohshit td
+{
+margin: 0px;
+padding: 0px;
+}
+#ohshit td #myavtr{
+background-position: center -8px !important;
+width:50px;
+height:75px;
+padding: 0px;
+}
+#ohshit td textarea{
+height: 100%;
+width: 100%;
+background: rgb(160, 160, 160);
+border: none;
+}
+
+#ohshit td input{
+width: 72px;
+height: 58px;
+margin: 10px 9px;
+background: rgb(153, 153, 153);
+border: none;
+color: white;
+font-size: 17px;
+font-family: monospace;
+border-radius: 18px;
+}
+#ohshit td div{
+border: 0px;
+border-radius: 0px;
+padding: 0px;
+}
+
+#master{
+width: 100%;
+height: 100%;
+margin: 0px !important;
+padding: 0px !important;
+border-spacing: 0px !important;
+position: fixed;
+top: 0px;
+}
+#master td{
+padding: 0px;
+}
+		</style>
 	</head>
 	<body id="body">
-		<div id="header">
-		</div>
 		<div id="menu" class="cl" onclick="menu();" ontouchstart="return true;">
 		<div id="logo">iHabi Messenger</div>
 		</div>
@@ -25,13 +143,24 @@
 		</div>
 		<div id="fade"></div>
 		
-		<div id="body">
+		<table id="master">
+		<tr style="height: 46px;"><td>
+			<div id="header"></div>
+		</td></tr>
+		<tr style="height: 54px;"><td>
 		<h1 onclick="atualizar();">
 			<div id="avatar"></div>
 			Amigos
 		</h1>
-		<div id="amigos"></div>
+		</td></tr>
+		
+		<tr style="     height: 100%; "><td>
+		<div id="amigos">
 		</div>
+		</div>
+		</td></tr>
+		
+		</table>
 		<div id="hidden"></div>
 		<div id="status"></div>
 	</body>
